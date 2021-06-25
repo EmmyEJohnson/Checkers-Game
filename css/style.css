@@ -1,0 +1,25 @@
+ * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  border: 2px solid black;
+  font-family: Copperplate;
+  background-color: radial-gradient(gray, black);
+  background: url('https://i.postimg.cc/7Yndnh3B/9-E4-A1-C36-405-D-43-B7-B908-89-E05-AEDD40-E.jpg') no-repeat;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  background-position: center;
+  background-position-y: 100px;
+  background-repeat: no-repeat;
+}
+
+
+
+.gameboard-container {
+  display: none;
+
+}
+
+
