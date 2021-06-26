@@ -1,25 +1,126 @@
- * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  border: 2px solid black;
+* {
+  color: white;
   font-family: Copperplate;
-  background-color: radial-gradient(gray, black);
-  background: url('https://i.postimg.cc/BZFHywny/AC3-AC6-CC-6049-40-F0-915-C-3-CC147-ECA17-C.jpg') no-repeat;
+}
+
+.rule-email-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  font-size: 25px;
+}
+
+.rules {
+  margin: auto;
+}
+
+.email-list {
+  margin: auto;
+}
+
+.flag {
+   width: 2600px;
+   height: 1800px;
+   margin-top: -40px;
+   margin-left: -10px;
+   margin-right: -100px;
+   margin-bottom: -900px;
+}
+.flag-element {
+  -webkit-animation: oscill 1s ease-in-out infinite alternate; 
+  -moz-animation: oscill 1s ease-in-out infinite alternate; 
+  -ms-animation: oscill 1s ease-in-out infinite alternate; 
+  animation: oscill 1s ease-in-out infinite alternate; 
+  background-position: center;
+  background: url('https://i.postimg.cc/FzgYZjWT/4-B5-AB85-E-11-A3-4-A78-8-CB9-F983-ED508303.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+  height: 100%;
+  width: 1px;
+  display: inline-block;
+  box-shadow:0 1px grey, 0 -1px gray;
+}
+@-webkit-keyframes oscill {
+  0% {
+      top: 0.5%;
+  }        
+  100% {
+      top: -0.5%;
+  }
+}
+@-moz-keyframes oscill {
+  0% {
+      top: 0.5%;
+  }        
+  100% {
+      top: -0.5%;
+  }
+}
+@-ms-keyframes oscill {
+  0% {
+      top: 0.5%;
+  }        
+  100% {
+      top: -0.5%;
+  }
+}
+@keyframes oscill {
+  0% {
+      top: 0.5%;
+  }        
+  100% {
+      top: -0.5%;
+  }
+}
+
+/* body {
+  background-image: url("https://i.postimg.cc/BbL0ZsDH/33-A39-ED1-5-D44-4-E36-97-E8-31172792228-A.jpg");
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
-  background-size: cover;
-  background-position: center;
-  background-position-y: 100px;
   background-repeat: no-repeat;
+  background-size: cover;
+}*/
+
+/* .rule-email-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  font-size: 25px;
 }
 
-
-
-.gameboard-container {
-  display: none;
-
+.rules {
+  margin: auto;
 }
+
+.email-list {
+  margin: auto;
+} */
+
+.rules:hover {
+  color: rgb(162, 6, 6);
+}
+
+.email-list:hover {
+  color: rgb(162, 6, 6);
+}
+
+.button-container {
+  text-align: center;
+  margin: auto;
+  position: relative;
+}
+
+button {
+  background-color: transparent;
+  border: transparent;
+  font-size: 30px; 
+}
+
+button:hover {
+  color: rgb(162, 6, 6);
+}
+
 
 

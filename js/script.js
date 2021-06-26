@@ -1,4 +1,13 @@
-
+var h = $('.flag').width();
+for(var i = 0; i < h; i++){
+    var flagElement = $("<div class='flag-element'>");
+    flagElement.css('background-position', -i + "px 0");
+    flagElement.css('-webkit-animation-delay', i * 2 + 'ms');
+    flagElement.css('-moz-animation-delay', i * 2 + 'ms');
+    flagElement.css('-ms-animation-delay', i * 2 + 'ms');
+    flagElement.css('animation-delay', i * 2 + 'ms');
+    $('.flag').append(flagElement);
+}
 
 // Checkers is a two player game. Each player starts with 12 colored discs (of the same color). Typically Checker discs come in sets of black and red.
 // A Checker board has 64 squares of alternating colors, 32 light and 32 dark squares.
