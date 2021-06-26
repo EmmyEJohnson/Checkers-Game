@@ -9,29 +9,161 @@
   integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
   crossorigin="anonymous"></script>
     <script defer src="./js/script.js"></script>
+
     <title>Checkers Game</title>
     
   </head>
-  <body>
-    <div class="flag"></div>
-   <div class="rule-email-container">
+  <body class="body">
+   
+      <div class="background">
+      </div>
 
+    
+
+   <div class="rule-email-container"><br>
+
+  <div class="navs">
     <div class="email-list">
-      Join the Republic of Pirates
+      <button class="dropbtn">Join the Republic of Pirates</button>
+      <div id="myDropdown" class="dropdown-content">
+        <form onsubmit="return false">
+        <input type="text" placeholder="Last Name" id="lastName"/><br>
+        <input type="text" placeholder="First Name" id="firstName"/><br>
+        <input type="email" placeholder="Enter email address" id="email" /><br>
+        <input type="checkbox" id="newsletter" />Send monthly newsletter<br>
+        <span>Questions/ Comments</span><br>
+        <textarea id="question" rows="4"></textarea><br>
+        <button id="joinBtn" onclick="join();">Join!</button>
+      </form>
+      </div>
     </div>
-
     <div class="rules">
       Directions and Rules
     </div>  
-
   </div>
+    <div class="welcome"><img src = "https://i.postimg.cc/PJHXty1T/891-E1-ECD-0987-4-D03-A06-F-05-C267-C37-C85.png">
+    </div>
+  </div>
+ 
 
-<div class="gameboard-container"></div>
+<div class="gameboard-container"></div><br>
 
 
     <div class="button-container">
       <button class=“play-button”>Ready to Play?</button>
     </div>
+
+    <!-- <div class="table" id="table">
+
+      <div class="checker white-checker"> </div>
+      <div class="checker white-checker"> </div>
+      <div class="checker white-checker"> </div>
+      <div class="checker white-checker"> </div>
+      <div class="checker white-checker"> </div>
+      <div class="checker white-checker"> </div>
+      <div class="checker white-checker"> </div>
+      <div class="checker white-checker"> </div>	
+      <div class="checker white-checker"> </div>
+      <div class="checker white-checker"> </div>
+      <div class="checker white-checker"> </div>
+      <div class="checker white-checker"> </div>	
+    
+      <div class="checker black-checker"> </div>
+      <div class="checker black-checker"> </div>
+      <div class="checker black-checker"> </div>
+      <div class="checker black-checker"> </div>
+      <div class="checker black-checker"> </div>
+      <div class="checker black-checker"> </div>
+      <div class="checker black-checker"> </div>
+      <div class="checker black-checker"> </div>
+      <div class="checker black-checker"> </div>
+      <div class="checker black-checker"> </div>
+      <div class="checker black-checker"> </div>
+      <div class="checker black-checker"> </div>
+    
+    
+      <div class="square black-square"> </div>
+      <div class="square white-square"> </div>
+      <div class="square black-square"> </div>
+      <div class="square white-square"> </div>
+      <div class="square black-square"> </div>
+      <div class="square white-square"> </div>
+      <div class="square black-square"> </div>
+      <div class="square white-square"> </div>
+      <div class="clear-float"> </div>
+      
+      <div class="square white-square"> </div>
+      <div class="square black-square"> </div>
+      <div class="square white-square"> </div>
+      <div class="square black-square"> </div>
+      <div class="square white-square"> </div>
+      <div class="square black-square"> </div>
+      <div class="square white-square"> </div>
+      <div class="square black-square"> </div>
+      <div class="clear-float"> </div>
+    
+      <div class="square black-square"> </div>
+      <div class="square white-square"> </div>
+      <div class="square black-square"> </div>
+      <div class="square white-square"> </div>
+      <div class="square black-square"> </div>
+      <div class="square white-square"> </div>
+      <div class="square black-square"> </div>
+      <div class="square white-square"> </div>
+      <div class="clear-float"> </div>
+    
+      <div class="square white-square"> </div>
+      <div class="square black-square"> </div>
+      <div class="square white-square"> </div>
+      <div class="square black-square"> </div>
+      <div class="square white-square"> </div>
+      <div class="square black-square"> </div>
+      <div class="square white-square"> </div>
+      <div class="square black-square"> </div>
+      <div class="clear-float"> </div>
+    
+      <div class="square black-square"> </div>
+      <div class="square white-square"> </div>
+      <div class="square black-square"> </div>
+      <div class="square white-square"> </div>
+      <div class="square black-square"> </div>
+      <div class="square white-square"> </div>
+      <div class="square black-square"> </div>
+      <div class="square white-square"> </div>
+      <div class="clear-float"> </div>
+    
+      <div class="square white-square"> </div>
+      <div class="square black-square"> </div>
+      <div class="square white-square"> </div>
+      <div class="square black-square"> </div>
+      <div class="square white-square"> </div>
+      <div class="square black-square"> </div>
+      <div class="square white-square"> </div>
+      <div class="square black-square"> </div>
+      <div class="clear-float"> </div>
+    
+      <div class="square black-square"> </div>
+      <div class="square white-square"> </div>
+      <div class="square black-square"> </div>
+      <div class="square white-square"> </div>
+      <div class="square black-square"> </div>
+      <div class="square white-square"> </div>
+      <div class="square black-square"> </div>
+      <div class="square white-square"> </div>
+      <div class="clear-float"> </div>
+    
+      <div class="square white-square"> </div>
+      <div class="square black-square"> </div>
+      <div class="square white-square"> </div>
+      <div class="square black-square"> </div>
+      <div class="square white-square"> </div>
+      <div class="square black-square"> </div>
+      <div class="square white-square"> </div>
+      <div class="square black-square"> </div>
+      <div class="clear-float"> </div>
+    
+    </div>
+     -->
 
 
   </body>
