@@ -9,8 +9,7 @@
 }
 
 #wrap {
-  position: relative;
-  
+  position: relative; 
 }
 
 .flag {
@@ -18,21 +17,13 @@
   height:2000px;
   position: absolute;
   top: 0;
-  margin: -20px;
-  
+  margin: -20px; 
   display: flex;
   flex-direction: row;
   justify-content: center;
-  /* align-content: space-around; */
-  text-align: center;
-  /* align-items: center; */
-  
-}
-
-
-.email-rule-btns {
   text-align: center;
 }
+
 
 .email-list {
   position: absolute;
@@ -45,33 +36,61 @@
   position: absolute;
   top:8%;
   right:5%;
-  width: 30%;
-  
+  width: 30%;  
 }
 
-.dropbtn {
+.dropbtn, .dropRules{
   font-size: 35px;
   background: transparent;
   border: transparent;
   text-shadow: 3px 2px 4px rgba(179, 2, 2, 0.8);
 }
 
-#myDropdown {
-  flex-direction: row;
-}
-
-#joinBtn {
-  justify-items: center;
-}
-
-#joinBtn:hover {
-  color: rgb(162, 6, 6);
-}
-
 .dropbtn:hover {
   color: rgb(162, 6, 6);
 }
-
+.dropRule:hover {
+  color: rgb(162, 6, 6);
+}
+#myDropdown {
+  margin-top: 10px; 
+  background: rgb(128, 128, 128, 0.8);
+  background-size: 100%;
+}
+#joinBtn {
+  justify-items: center;
+  background: transparent;
+  border: transparent;
+  font-size: 35px;
+  margin-bottom: 10px;
+}
+#joinBtn:hover {
+  color: rgb(162, 6, 6);
+}
+.signup {
+  width: 98%;
+  margin-bottom: 5px;
+  margin-top: 10px;
+  font-size: 20px;
+}
+label{
+  font-size: 20px;
+}
+textarea {
+  height: 200px;
+}
+#myDropRules {
+  margin-top: 10px; 
+  font-size: 20px;
+  background: rgb(128, 128, 128, 0.8);
+  background-size: 100%;
+}
+li {
+  color: red;
+}
+p {
+ color: white;
+}
 .welcome-page {
   text-align: center;
   margin-top: 5%;
@@ -81,14 +100,13 @@
   width: 70%;
 }
 
-.welcome-page button {
-  font-size: 40px;
+button#playBttn {
+  font-size: 50px;
   background: transparent;
   border: transparent;
-  text-shadow: 3px 2px 4px rgba(179, 2, 2, 0.8);
 }
 
-.welcome-page button:hover {
+button#playBttn :hover {
   color: rgb(162, 6, 6);
 }
 
@@ -104,12 +122,10 @@
   height: 120%;
   width:1px;
   display: inline-block;
-  /* box-shadow:0 0.2px rgb(0, 0, 0), 0 -0.2px rgb(0, 0, 0); */
   z-index: -3;
 }
 
-
-/* @-webkit-keyframes oscill {
+@-webkit-keyframes oscill {
   0% {
       top: 1%;
   }        
@@ -140,51 +156,15 @@
   100% {
       top: -1%;
   }
-}  */
+} 
 
 /* #board {
   margin-top: 50px;
 } */
 
-@media screen and (max-width:900px) {
-  .email-list {
-    margin-left: 1rem;
-    z-index: 1;
-  }
-
-  .rules { 
-    margin-left: 9rem;
-    margin-right: 2rem;
-    z-index: 1;
-  }
-
-  button {
-    margin-top: auto;
-  }
-
-}
 
 
-@media screen and (max-width:700px) {
-  .dropbtn {
-    font-size: 20px;
-  }
 
-  button {
-    font-size: 25px;
-  }
-
-  .email-list {
-    margin-left: 2rem;
-    z-index: 1;
-  }
-  
-  .rules { 
-    margin-left: 10rem;
-    margin-right: 2rem;
-    z-index: 1;
-  }
-}
 
 
 

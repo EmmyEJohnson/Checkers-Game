@@ -13,14 +13,29 @@ for(let i = 0; i < h; i++){
 
 //dropdowns for .email-list and .rules
 
-$("#myDropdown").hide();
+//$("#myDropdown").hide();
 $(".dropbtn").click(function(e){
+  e.stopPropagation();
   $("#myDropdown").show('slow');
+  console.log("working");
 })
 
 $(':not(#myDropdown)').click(function(e) {
   $('#myDropdown').hide();
 });
+
+//$("#myDropRules").hide();
+$(".dropRules").click(function(e){
+  e.stopPropagation();
+  $("#myDropRules").show('slow');
+  console.log("working working");
+})
+
+$(':not(#myDropRules)').click(function(e) {
+  $('#myDropRules').hide();
+});
+
+//Ready to play button
 
 //Group all fields into an object
 //Linking all the fields to our fields object

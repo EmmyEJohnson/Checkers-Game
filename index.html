@@ -24,54 +24,89 @@
      </div>
     <!--closes .flag -->
 
-      <div class="email-rule-btns">
-
         <div class="email-list">
 
-          <button class="dropbtn">Join the Republic of Pirates</button>
+          <button class="dropbtn">Join the Republic of Pirates</button><br>
 
     <div id="myDropdown" class="dropdown-content">
 
       <form onsubmit="return false">
 
-        <input type="text" placeholder="Last Name" id="lastName"/><br>
+        <input class="signup" type="text" placeholder="Last Name" id="lastName"/><br>
 
-        <input type="text" placeholder="First Name" id="firstName"/><br>
+        <input class="signup" type="text" placeholder="First Name" id="firstName"/><br>
 
-        <input type="email" placeholder="Enter email address" id="email" /><br>
+        <input class="signup" type="email" placeholder="Enter email address" id="email"/><br>
 
-        <input type="checkbox" id="newsletter" />Send monthly newsletter<br>
+        <input class="signup" type="checkbox" id="newsletter"/>
+        <label for="newsletter">Send Monthly Newsletter</label><br><br>
 
-        <span>Questions/ Comments</span><br>
+        <span id="news" class="signup">Questions/ Comments</span><br>
 
-        <textarea id="question" rows="4"></textarea><br>
+        <textarea class="signup" id="question" rows="4"></textarea><br>
 
         <button id="joinBtn" onclick="join();">Join!</button>
           </form>
-      </div>
-<!--closes #myDropdown .dropdown-content -->
+      </div><!--closes #myDropdown .dropdown-content -->
 
-  </div><br><!-- closes .email-list -->
-    <div id="rule-drop" class="rules">
+  </div><!-- closes .email-list -->
 
-      <button class="dropbtn">Directions and Rules</button>
-
+    <div class="rules">
+      <button class="dropRules">Directions and Rules</button>
+      <div id="myDropRules" class="droprule-content"> 
+          <ol><br>
+            <li>
+              <p>Click on the doubloon piece you would like to move
+            </li><br>
+            <li>
+             <p>Checkers is a two player game. Each player starts with 12 colored discs (of the same color). Typically Checker discs come in sets of black and red.</p>
+            </li><br>
+            <li>
+              <p>A Checker board has 64 squares of alternating colors, 32 light and 32 dark squares.</p>
+            </li><br>
+            <li>
+              <p>Players place their discs (pieces) on the dark squares on their side of the board.</p>
+            </li><br>
+            <li>
+              <p>Black has first play, after turns alternate.</p>
+            </li><br>
+            <li>
+              <p>Moves can only be made on black squares, so the pieces move diagonally. Pieces can only move in a forward direction, toward their opponent.</p>
+            </li><br>
+            <li>
+              <p>If you are moving your disc forward, and not capturing your opponent’s piece in the move, you may only move it forward one square.</p>
+            </li><br>
+            <li>
+              <p>In a capturing move, a piece leaps of the opponents piece in a diagonal line, landing on a dark square on the other side. While you can only capture one piece per jump you can make multiple jumps in a single turn, if the positioning of the pieces allow.</p>
+            </li><br>
+            <li>
+              <p>After a piece is captured, it is removed from the board, and collected by the opponent.</p>
+            </li><br>
+            <li>
+              <p>If you have the ability to jump your opponents pieces, you must. However, in the even there are more than one capture possible from a single square, you may jump whichever piece is preferable.</p>
+            </li><br>
+            <li>
+              <p>Once a piece reaches the first row of their opponents side of the board (conversely, the row farthest from the player who controls the piece), that piece is kinged, or becomes a king, and is crowned with a piece that had been captured by the opponent. King’s stand twice as tall as a single piece.</p>
+            </li><br>
+            <li>
+              <p>Kings can only move diagonally as well, however they can move forward or backward as opposed to single pieces.</p>
+            </li><br>
+            <li>
+              <p>Kings can also jump both forward and backward (diagonally) in the same turn, a multi-direction multi-jump.</p>
+            </li><br>
+            <li>
+              <p>The game is won when the opponent is unable to make a move. This can happen one of two ways: the entirety of a player’s pieces were captured by the opponent, or a player’s pieces are all blocked from moving.</p>
+            </li><br>
+          </ol>
+      </div><!--closes #myDropRules-->
     </div><br><!-- closes .rules -->
-  
-</div> <!-- closes .email-rule-btns -->
 
 <div class="welcome-page">
   <div class="welcome-img">
-    <img src="https://i.postimg.cc/13tQMXyc/891-E1-ECD-0987-4-D03-A06-F-05-C267-C37-C85.png" width=137%>  
-   </div> <br>
+    <img src="https://i.postimg.cc/13tQMXyc/891-E1-ECD-0987-4-D03-A06-F-05-C267-C37-C85.png" width=137%></div>  
   
-
-  <button id="plyBtn" class=“dropbtn”>Ready to Play?</button>
-
 </div> <!-- closes .welcome-page -->
-
-</div>
-<!--closes .flag --> 
+  
 </div> <!--closes wrapper-->
 
 <!-- 
@@ -199,7 +234,9 @@
 
   <!-- </div> -->
   <!-- closes .gameboard-container -->
- 
+  <div id="playPlay" class="welcomePlay">
+    <button id="playBttn" onclick="playTime();">Ready to Play?</button>
+  </div>
 
 </body> 
 
