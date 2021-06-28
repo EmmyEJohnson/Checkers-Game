@@ -10,61 +10,197 @@
   crossorigin="anonymous"></script>
     <script defer src="./js/script.js"></script>
 
-    <title>Checkers Game</title>
+    <title>Checkers</title>
     
   </head>
-<body class="body-element">
+  
+  <body>
+    <div id="wrap">
+    <div class="flag"> 
 
-<!-- <div class="img-container">
+ 
+    
 
-<div class="body-img"><img src = "https://i.postimg.cc/PJHXty1T/891-E1-ECD-0987-4-D03-A06-F-05-C267-C37-C85.png"></div>
+     </div>
+    <!--closes .flag -->
 
-</div> -->
+      <div class="email-rule-btns">
 
-<div class="email-rule-container">
+        <div class="email-list">
 
-<div class="email-list">
-
-  <button class="dropbtn">Join the Republic of Pirates</button>
+          <button class="dropbtn">Join the Republic of Pirates</button>
 
     <div id="myDropdown" class="dropdown-content">
 
       <form onsubmit="return false">
 
-      <input type="text" placeholder="Last Name" id="lastName"/><br>
+        <input type="text" placeholder="Last Name" id="lastName"/><br>
 
-      <input type="text" placeholder="First Name" id="firstName"/><br>
+        <input type="text" placeholder="First Name" id="firstName"/><br>
 
-      <input type="email" placeholder="Enter email address" id="email" /><br>
+        <input type="email" placeholder="Enter email address" id="email" /><br>
 
-      <input type="checkbox" id="newsletter" />Send monthly newsletter<br>
+        <input type="checkbox" id="newsletter" />Send monthly newsletter<br>
 
-      <span>Questions/ Comments</span><br>
+        <span>Questions/ Comments</span><br>
 
-      <textarea id="question" rows="4"></textarea><br>
+        <textarea id="question" rows="4"></textarea><br>
 
-      <button id="joinBtn" onclick="join();">Join!</button>
-        </form>
+        <button id="joinBtn" onclick="join();">Join!</button>
+          </form>
       </div>
-    </div><br>
+<!--closes #myDropdown .dropdown-content -->
 
-    <div class="rules">
+  </div><br><!-- closes .email-list -->
+    <div id="rule-drop" class="rules">
+
       <button class="dropbtn">Directions and Rules</button>
-    </div><br>
+
+    </div><br><!-- closes .rules -->
   
-</div>
+</div> <!-- closes .email-rule-btns -->
 
-<div class="img-container">
-
-  <div class="body-img"><img src = "https://i.postimg.cc/PJHXty1T/891-E1-ECD-0987-4-D03-A06-F-05-C267-C37-C85.png" class="img-body"></div><br><br>
+<div class="welcome-page">
+  <div class="welcome-img">
+    <img src="https://i.postimg.cc/13tQMXyc/891-E1-ECD-0987-4-D03-A06-F-05-C267-C37-C85.png" width=137%>  
+   </div> <br>
   
-  </div>
 
-<div class="button-container">
-  <button class=“play-button”>Ready to Play?</button>
+  <button id="plyBtn" class=“dropbtn”>Ready to Play?</button>
+
+</div> <!-- closes .welcome-page -->
+
 </div>
+<!--closes .flag --> 
+</div> <!--closes wrapper-->
 
-</body>
+<!-- 
+ <div class="gameboard-container" id="board">
 
+  <div class="doubloon white-doubloon" style="display:none"> </div>
+<div class="doubloon black-doubloon" style="display:none"> </div>
+
+
+<div class="square" style="display: none" id ="ht"> </div>
+<div class="black-background" id="black-background"> </div>
+
+	<div class="score" id="score">
+		<br>
+	</div>
+<div class="checkerBoard">
+    <div class="doubloon white-doubloon"> </div>
+    <div class="doubloon white-doubloon"> </div>
+    <div class="doubloon white-doubloon"> </div>
+    <div class="doubloon white-doubloon"> </div>
+    <div class="doubloon white-doubloon"> </div>
+    <div class="doubloon white-doubloon"> </div>
+    <div class="doubloon white-doubloon"> </div>
+    <div class="doubloon white-doubloon"> </div>  
+    <div class="doubloon white-doubloon"> </div>
+    <div class="doubloon white-doubloon"> </div>
+    <div class="doubloon white-doubloon"> </div>
+    <div class="doubloon white-doubloon"> </div>  
+  
+    <div class="doubloon black-doubloon"> </div>
+    <div class="doubloon black-doubloon"> </div>
+    <div class="doubloon black-doubloon"> </div>
+    <div class="doubloon black-doubloon"> </div>
+    <div class="doubloon black-doubloon"> </div>
+    <div class="doubloon black-doubloon"> </div>
+    <div class="doubloon black-doubloon"> </div>
+    <div class="doubloon black-doubloon"> </div>
+    <div class="doubloon black-doubloon"> </div>
+    <div class="doubloon black-doubloon"> </div>
+    <div class="doubloon black-doubloon"> </div>
+    <div class="doubloon black-doubloon"> </div>
+  
+  
+    <div class="square black-square"> </div>
+    <div class="square white-square"> </div>
+    <div class="square black-square"> </div>
+    <div class="square white-square"> </div>
+    <div class="square black-square"> </div>
+    <div class="square white-square"> </div>
+    <div class="square black-square"> </div>
+    <div class="square white-square"> </div>
+    <div class="clear-ring"> </div>
+    
+    <div class="square white-square"> </div>
+    <div class="square black-square"> </div>
+    <div class="square white-square"> </div>
+    <div class="square black-square"> </div>
+    <div class="square white-square"> </div>
+    <div class="square black-square"> </div>
+    <div class="square white-square"> </div>
+    <div class="square black-square"> </div>
+    <div class="clear-ring"> </div>
+  
+    <div class="square black-square"> </div>
+    <div class="square white-square"> </div>
+    <div class="square black-square"> </div>
+    <div class="square white-square"> </div>
+    <div class="square black-square"> </div>
+    <div class="square white-square"> </div>
+    <div class="square black-square"> </div>
+    <div class="square white-square"> </div>
+    <div class="clear-ring"> </div>
+  
+    <div class="square white-square"> </div>
+    <div class="square black-square"> </div>
+    <div class="square white-square"> </div>
+    <div class="square black-square"> </div>
+    <div class="square white-square"> </div>
+    <div class="square black-square"> </div>
+    <div class="square white-square"> </div>
+    <div class="square black-square"> </div>
+    <div class="clear-ring"> </div>
+  
+    <div class="square black-square"> </div>
+    <div class="square white-square"> </div>
+    <div class="square black-square"> </div>
+    <div class="square white-square"> </div>
+    <div class="square black-square"> </div>
+    <div class="square white-square"> </div>
+    <div class="square black-square"> </div>
+    <div class="square white-square"> </div>
+    <div class="clear-ring"> </div>
+  
+    <div class="square white-square"> </div>
+    <div class="square black-square"> </div>
+    <div class="square white-square"> </div>
+    <div class="square black-square"> </div>
+    <div class="square white-square"> </div>
+    <div class="square black-square"> </div>
+    <div class="square white-square"> </div>
+    <div class="square black-square"> </div>
+    <div class="clear-ring"> </div>
+  
+    <div class="square black-square"> </div>
+    <div class="square white-square"> </div>
+    <div class="square black-square"> </div>
+    <div class="square white-square"> </div>
+    <div class="square black-square"> </div>
+    <div class="square white-square"> </div>
+    <div class="square black-square"> </div>
+    <div class="square white-square"> </div>
+    <div class="clear-ring"> </div>
+  
+    <div class="square white-square"> </div>
+    <div class="square black-square"> </div>
+    <div class="square white-square"> </div>
+    <div class="square black-square"> </div>
+    <div class="square white-square"> </div>
+    <div class="square black-square"> </div>
+    <div class="square white-square"> </div>
+    <div class="square black-square"> </div>
+    <div class="clear-ring"> </div> -->
+  <!-- </div> -->
+  <!-- closes .checkerBoard -->
+
+  <!-- </div> -->
+  <!-- closes .gameboard-container -->
+ 
+
+</body> 
 
 </html>

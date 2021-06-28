@@ -1,68 +1,67 @@
+/* CSS Flexbox */
+
 * {
   margin: 0;
   padding: 0;
   color: white;
   font-family: Copperplate;
-
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-content: space-around;
   text-align: center;
-
 }
 
-title {
-  color: transparent;
+#wrap {
+  position: relative;
+  
 }
 
-.img-container {
-  margin-right: 15px;
-  z-index: 0;
-}
-
-.body-element {
-  -webkit-animation: oscill 1s ease-in-out infinite alternate; 
-  -moz-animation: oscill 1s ease-in-out infinite alternate; 
-  -ms-animation: oscill 1s ease-in-out infinite alternate; 
-  animation: oscill 1s ease-in-out infinite alternate;
-  background-color: black;
-  background-image: url('https://i.postimg.cc/FsN0C1h8/lastblackwaterimage.jpg'); 
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-
-.email-rule-container {
+.flag {
+  width: 2800px;
+  height:2000px;
+  position: absolute;
+  top: 0;
+  margin: -20px;
+  
+  display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: center;
+  /* align-content: space-around; */
+  text-align: center;
+  /* align-items: center; */
+  
+}
+
+
+.email-rule-btns {
   text-align: center;
 }
 
 .email-list {
-  margin-left: 2rem;
-  z-index: 1;
+  position: absolute;
+  top:8%;
+  left:6%;
+  width: 30%;
 }
 
 .rules { 
-  margin-left: 21rem;
-  margin-right: 2rem;
-  z-index: 1;
+  position: absolute;
+  top:8%;
+  right:5%;
+  width: 30%;
+  
 }
 
 .dropbtn {
-  font-size: 30px;
+  font-size: 35px;
   background: transparent;
   border: transparent;
   text-shadow: 3px 2px 4px rgba(179, 2, 2, 0.8);
-  margin-top: 30px;
 }
 
 #myDropdown {
-  /* flex-direction: row; */
+  flex-direction: row;
 }
 
 #joinBtn {
-  /* justify-items: center; */
+  justify-items: center;
 }
 
 #joinBtn:hover {
@@ -73,23 +72,44 @@ title {
   color: rgb(162, 6, 6);
 }
 
-.button-container {
-  flex-direction: row;
-  justify-content: space-around;
+.welcome-page {
+  text-align: center;
+  margin-top: 5%;
+}
+.welcome-img {
+  margin-left: 1%;
+  width: 70%;
 }
 
-button {
+.welcome-page button {
   font-size: 40px;
   background: transparent;
   border: transparent;
   text-shadow: 3px 2px 4px rgba(179, 2, 2, 0.8);
 }
 
-button:hover {
+.welcome-page button:hover {
   color: rgb(162, 6, 6);
 }
 
-@-webkit-keyframes oscill {
+.flag-element {
+  -webkit-animation:oscill 1s ease-in-out infinite alternate; 
+  -moz-animation:oscill 1s ease-in-out infinite alternate; 
+  -ms-animation:oscill 1s ease-in-out infinite alternate; 
+  animation:oscill 1s ease-in-out infinite alternate; 
+  background: url('https://i.postimg.cc/5y0yzZw9/CA7-C5-ED5-01-BB-4-BFF-85-CF-4-BDE673-DB9-AD-1-105-c.jpg');
+  background-size: 4000px 100%;
+  background-repeat: no-repeat no-repeat;
+  position:relative;
+  height: 120%;
+  width:1px;
+  display: inline-block;
+  /* box-shadow:0 0.2px rgb(0, 0, 0), 0 -0.2px rgb(0, 0, 0); */
+  z-index: -3;
+}
+
+
+/* @-webkit-keyframes oscill {
   0% {
       top: 1%;
   }        
@@ -120,7 +140,11 @@ button:hover {
   100% {
       top: -1%;
   }
-} 
+}  */
+
+/* #board {
+  margin-top: 50px;
+} */
 
 @media screen and (max-width:900px) {
   .email-list {
@@ -162,35 +186,7 @@ button:hover {
   }
 }
 
-@media screen and (min-width:1640px) {
 
-  .img-container {
-    width: 113rem;
-    align-self: center;
-    
-  }
 
-  .email-rule-container {
-    align-self: space-around;
-    margin-left: 10rem;
-  }
 
-  .dropbtn {
-    font-size: 39px;
-  }
-
-  button {
-    font-size: 55px;
-
-  }
-
-  .email-list {
-    z-index: 1;
-  }
-  
-  .rules { 
-    margin-right: 10rem;
-    z-index: 1;
-  }
-}
-
+ 
