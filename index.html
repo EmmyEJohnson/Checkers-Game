@@ -14,7 +14,7 @@
     
   </head>
   
-  <body>
+  <body class="landingPage">
     <div id="wrap">
     <div class="flag"> 
 
@@ -43,7 +43,7 @@
 
         <span id="news" class="signup">Questions/ Comments</span><br>
 
-        <textarea class="signup" id="question" rows="4"></textarea><br>
+        <textarea class="signup" id="question" rows="4" placeholder="UNDER CONSTRUCTION"></textarea><br>
 
         <button id="joinBtn" onclick="join();">Join!</button>
           </form>
@@ -110,11 +110,14 @@
 </div> <!--closes wrapper-->
 
 <div class="playChecks">
-  <button class="playBttn">Ready to Play?</button>
+  <button class="playBttn" id="playBttn" onclick="openBoard();">Ready to Play?</button><br>
 
+  <tr><td><label>Player 1: <input type=text id=p1name class="player"/></label><br/><br/>
+    <label>Player 2: <input type=text id=p2name class="player"/></label><br/><br/>
+  
  <div class="gameboard-container" id="board">
 
-  <div class="doubloon white-doubloon" style="display:none"> </div>
+  <!-- <div class="doubloon white-doubloon" style="display:none"> </div>
 <div class="doubloon black-doubloon" style="display:none"> </div>
 
 
@@ -230,9 +233,9 @@
     <div class="square black-square"> </div>
     <div class="square white-square"> </div>
     <div class="square black-square"> </div>
-    <div class="clear-ring"> </div>
+    <div class="clear-ring"> </div> -->
     
-  </div> <!--closes .checkerBoard-->
+  <!-- </div> closes .checkerBoard -->
 
   </div> <!-- closes .gameboard-container -->
 
