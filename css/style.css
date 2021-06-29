@@ -24,6 +24,7 @@
   text-align: center;
 }
 
+/* <div class="email-list"> */
 
 .email-list {
   position: absolute;
@@ -32,14 +33,7 @@
   width: 30%;
 }
 
-.rules { 
-  position: absolute;
-  top:8%;
-  right:5%;
-  width: 30%;  
-}
-
-.dropbtn, .dropRules{
+.dropbtn{
   font-size: 35px;
   background: transparent;
   border: transparent;
@@ -49,9 +43,7 @@
 .dropbtn:hover {
   color: rgb(162, 6, 6);
 }
-.dropRule:hover {
-  color: rgb(162, 6, 6);
-}
+
 #myDropdown {
   margin-top: 10px; 
   background: rgb(128, 128, 128, 0.8);
@@ -79,6 +71,26 @@ label{
 textarea {
   height: 200px;
 }
+
+.rules { 
+  position: absolute;
+  top:8%;
+  right:5%;
+  width: 30%;  
+}
+.dropRules {
+  font-size: 35px;
+  background: transparent;
+  border: transparent;
+  text-shadow: 3px 2px 4px rgba(179, 2, 2, 0.8);
+}
+
+.dropRules:hover {
+  color: rgb(162, 6, 6);
+}
+
+/* <div class="rules"> section */
+
 #myDropRules {
   margin-top: 10px; 
   font-size: 20px;
@@ -91,22 +103,30 @@ li {
 p {
  color: white;
 }
+
+/* <div class="welcome-page"> section */
+
 .welcome-page {
   text-align: center;
-  margin-top: 5%;
+  margin-top: 3.5%;
 }
 .welcome-img {
-  margin-left: 1%;
+  margin-left: 1.2%;
   width: 70%;
 }
-
-button#playBttn {
-  font-size: 50px;
-  background: transparent;
-  border: transparent;
+/* <div class="playChecks"> section */
+.playChecks {
+  position: relative;
 }
 
-button#playBttn :hover {
+.playBttn{
+  font-size: 55px;
+  background: transparent;
+  border: transparent;
+  text-shadow: 3px 2px 4px rgba(179, 2, 2, 0.8);
+}
+
+.playBttn:hover {
   color: rgb(162, 6, 6);
 }
 
@@ -125,7 +145,7 @@ button#playBttn :hover {
   z-index: -3;
 }
 
-@-webkit-keyframes oscill {
+/* @-webkit-keyframes oscill {
   0% {
       top: 1%;
   }        
@@ -156,7 +176,7 @@ button#playBttn :hover {
   100% {
       top: -1%;
   }
-} 
+}  */
 
 /* #board {
   margin-top: 50px;

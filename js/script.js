@@ -11,31 +11,19 @@ for(let i = 0; i < h; i++){
     $('.flag').append(flagElement);
 }
 
-//dropdowns for .email-list and .rules
-
-//$("#myDropdown").hide();
-$(".dropbtn").click(function(e){
+//dropdown button email form for Join the republic of pirates
+$("#myDropdown").hide();
+$('.dropbtn').click(function(e) {
   e.stopPropagation();
-  $("#myDropdown").show('slow');
-  console.log("working");
-})
-
-$(':not(#myDropdown)').click(function(e) {
-  $('#myDropdown').hide();
+  e.preventDefault();
+  let target = $("#myDropdown");
+  if (target.is(':visible')) {
+      $('#myDropdown').css('cssText', 'display: none');
+  } else {
+      $('#myDropdown').css('cssText', 'display: block');
+  }
 });
 
-//$("#myDropRules").hide();
-$(".dropRules").click(function(e){
-  e.stopPropagation();
-  $("#myDropRules").show('slow');
-  console.log("working working");
-})
-
-$(':not(#myDropRules)').click(function(e) {
-  $('#myDropRules').hide();
-});
-
-//Ready to play button
 
 //Group all fields into an object
 //Linking all the fields to our fields object
@@ -118,6 +106,18 @@ function join() {
  }
 }
 
+//Rules and Directions button
+$("#myDropRules").hide();
+$('.dropRules').click(function(e) {
+  e.stopPropagation();
+  e.preventDefault();
+  let target = $("#myDropRules");
+  if (target.is(':visible')) {
+      $('#myDropRules').css('cssText', 'display: none');
+  } else {
+      $('#myDropRules').css('cssText', 'display: block');
+  }
+});
 
 // Click on the doubloon piece you would like to move
 // Checkers is a two player game. Each player starts with 12 colored discs (of the same color). Typically Checker discs come in sets of black and red.
@@ -133,6 +133,10 @@ function join() {
 // Kings can only move diagonally as well, however they can move forward or backward as opposed to single pieces.
 // Kings can also jump both forward and backward (diagonally) in the same turn, a multi-direction multi-jump.
 // The game is won when the opponent is unable to make a move. This can happen one of two ways: the entirety of a player’s pieces were captured by the opponent, or a player’s pieces are all blocked from moving.
+
+//Ready to play button
+
+
 
 //Declaring global variables
 
