@@ -6,7 +6,7 @@
   color: white;
   font-family: Copperplate;
   text-align: center;
-}
+} 
 
 #wrap {
   position: relative; 
@@ -150,6 +150,13 @@ p {
   display: inline-block;
   z-index: -3;
 }
+/*forgot what this div is for*/
+#div1 {
+  width: 350px;
+  height: 70px;
+  padding: 10px;
+  border: 1px solid #aaaaaa;
+}
 
 /* @-webkit-keyframes oscill {
   0% {
@@ -183,7 +190,8 @@ p {
       top: -1%;
   }
 }  */
-.blackBeard {
+
+ .blackBeard {
   background: url("https://i.postimg.cc/fLhjfY7f/8-D1-E6986-BB56-4161-872-B-5-E7-D440-B77-F3.jpg"), rgb(0, 0, 0);
   background-position: relative;
   background-size: 100%;
@@ -192,55 +200,128 @@ p {
 .pyrateTitle {
   color: rgba(255, 255, 255, 0.7);
   text-shadow: 3px 2px 4px rgba(255, 255, 255, 0.7);
-  margin-top: 30px;
-  font-size: 80px;
+  margin-top: 20px;
+  font-size: 70px;
 }
 .pyrateTitle span {
-  font-size: 50px;
+  font-size: 40px;
+  color: rgba(248, 208, 122, 0.568);
+  text-shadow: 3px 2px 4px rgba(2, 2, 2, 0.8);
 }
 
-.silverDoubloon {
+h4 {
+  font-size: 30px;
+}
+
+#board{
+  width: 360px;
+  height: 360px;
+  background: #000;
+  margin: 0 auto;
+  border: 10px solid #888;
+  overflow: hidden;
+  
+}
+
+#board ul{
+  width: 360px;
+  height: 45px;
+  padding: 0;
+  margin: 0;
   position: absolute;
-  z-index: 5;
+}
+
+#board li{
+  width: 45px;
+  height: 45px;
+  background: #fff;
+  margin-right: 45px;
+  float: left;
+  box-sizing: border-box;
+  cursor: pointer;
+}
+
+#board ul:nth-of-type(2n){
+  margin-left: 45px;
+}
+
+.playerOne::after{
+  content: '';
+  width: 35px;
+  height: 35px;
+  background: silver;
+  display: block;
+  border-radius: 50%;
+  border: solid 2px #000;
+  box-sizing: border-box;
+  margin: 5px;
+}
+
+.playerTwo::after{
+  content: '';
+  width: 35px;
+  height: 35px;
+  background: goldenrod;
+  display: block;
+  border-radius: 50%;
+  border: solid 2px #000;
+  box-sizing: border-box;
+  margin: 5px;
+}
+
+.playerOne.captain::before, .playerTwo.captain::before{
+  content: '';
+  width: 10px;
+  height: 10px;
+  position: absolute;
+  top: 17.5px;
+  left: 17.5px;
+  border-radius: 50%;
+  background: yellow;
+  z-index: 10;
+}
+
+li#selected{
+  background: #f00;
+}
+
+#restart{
+  margin: 40px;
+  width: 120px;
+  height: 50px;
+  font-size: 20px;
+  border-radius: 2em;
+  outline: none;
+}
+
+
+
+
+
+
+
+/*future features to work on*/
+
+/* .silverDoubloon {
+  content: url("https://i.postimg.cc/jj90QpTP/2255-A307-528-F-4-E9-D-92-CC-589-C381-C057-C.png");
+  width: 15%;
+  position: absolute;
+  z-index: 10;
 }
 
 .goldDoubloon {
+  content: url("https://i.postimg.cc/6TxsZndZ/D9-B92-EB7-015-E-4-D30-91-AC-083428-DB6-F6-D.png");
+  width: 15%;
   position: absolute;
-  z-index: 5;
-}
+  z-index: 10;
+} */
 
 
-#pyrateGame {
-  position: absolute;
-  top: 13%;
-  left: 8%;
-  right: 23%;
-  justify-content: center;
-  align-self: center;
-  color: gray;
-}
+/* #pyrateGame {
+  position: relative;
+  top: 40px;
+  left: 10%;
+}*/
 
-table {
-  border-spacing: 0px;
-}
-td {
-  width: 50px;
-  height: 50px;
-}
-.div1 {
-  font-size: medium;
-}
-.gamePiece {
-  border-radius: 100%;
-  height: 100%;
-  width: 100%;
-  background-color: red;
-}
+  
 
-     
-
-
-
-
-
- 
