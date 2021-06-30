@@ -2,16 +2,20 @@
 
 //background
 
-let h = $('.flag').width();
-for(let i = 0; i < h; i++){
-    let flagElement = $("<div class='flag-element'>");
-    flagElement.css('background-position', -i + "px 0");
-    flagElement.css('-webkit-animation-delay', i * 2 + 'ms');
-    flagElement.css('-moz-animation-delay', i * 2 + 'ms');
-    flagElement.css('-ms-animation-delay', i * 2 + 'ms');
-    flagElement.css('animation-delay', i * 2 + 'ms');
-    $('.flag').append(flagElement);
-}
+
+
+//will implement later
+
+// let h = $('.flag').width();
+// for(let i = 0; i < h; i++){
+//     let flagElement = $("<div class='flag-element'>");
+//     flagElement.css('background-position', -i + "px 0");
+//     flagElement.css('-webkit-animation-delay', i * 2 + 'ms');
+//     flagElement.css('-moz-animation-delay', i * 2 + 'ms');
+//     flagElement.css('-ms-animation-delay', i * 2 + 'ms');
+//     flagElement.css('animation-delay', i * 2 + 'ms');
+//     $('.flag').append(flagElement);
+// }
 
 //dropdown button email form for ioin the republic of pirates
 $("#myDropdown").hide();
@@ -156,575 +160,334 @@ $('.playBttn').click(function(e) {
 
 //checkerboard game page
 
-/*Global Variables
-    Variable to store the players class and the captain class:*/
-    let playerOne = "playerOne";
-    playerTwo = "playerTwo";
-    captain = "captain";
+let units = new Array(8); // for board array
+let gold = true;
+let row = document.querySelectorAll("tr");
+for (let i = 0; i < 8; i++) {
+  let rc = row[i].children;
+  units[i] = rc;
+}
+let rows;
+let columns;
+let currentChecker;
 
-//  Variable to store the player's turn and which piece is selected:
-    game = {turn: playerOne,
-            selected: false};
-
-//Function to reset 
-function restart(){
-  
-  //First clear all the pieces from the previous board
-  let empty = $("#board li").slice(0, 32);  
-  empty.attr("class", "");
-  empty.attr("id", "");
-  
-  //Place all the pieces for a new game
-  let ones = $("#board li").slice(0, 12);
-  let twos = $("#board li").slice(20, 32);
-  ones.attr("class", playerOne);
-  twos.attr("class", playerTwo);
-  
-  //Reset the values of game
-  game.turn = playerOne;
-  game.selected = false;
+function Checker(player, rowIndex, colIndex, isCaptain) {
+  this.player = player;
+  this.rowIndex = rowIndex;
+  this.colIndex = colIndex;
+  this.isCaptain = isCaptain;
 }
 
-function placePiece(player, x, y){
-  x = parseInt(x);
-  y = parseInt(y);
-  let piece = $("#board li").slice((y*4+x), (y*4+x+1));
-  $(piece).attr("class", player);
-}
+let checkers = new Array();
 
-function clearPiece(x, y){
-  x = parseInt(x);
-  y = parseInt(y);
-  let piece = $("#board li").slice((y*4+x), (y*4+x+1)); 
-  $(piece).removeClass(playerOne + " captain " + playerTwo); 
-  $(piece).removeAttr("id");
-}
+function initCheckers() {
+  let checker;
 
-function input(piece){
-  //Check if there was a previous selected piece
-  if(!game.selected){
-    //Check if the selected piece belongs to the current player
-    if($(piece).attr("class") != game.turn){
-      alert("Please select a valid piece.");
-      return;
+  for (let i = 0; i < 8; i++) {
+    for (let j = 0; j < 8; j++) {
+      if ((i + j) % 2 == 0) {
+        if (i < 3) {
+          checker = new Checker("silver", i, j, false);
+          checkers.push(checker);
+        }
+        if (i > 4) {
+          checker = new Checker("gold", i, j, false);
+          checkers.push(checker);
+        }
+      }
     }
-    //Store the selected piece in memory
-    game.selected = {x: null, y: null, piece: piece};
-    game.selected.y = ($(piece).attr("data-row"));
-    game.selected.x = ($(piece).attr("data-column"));
+  }
+}
+initCheckers();
+
+function findcolrow(e) {
+  rows = e.target.parentElement.parentElement.rowIndex;
+  columns = e.target.parentElement.cellIndex;
+  currentChecker = units[rows][columns];
+  return rows + "" + columns;
+}
+
+function makeMoves(e) {
+  let rowIndex = e.target.parentElement.rowIndex;
+  let columnIndex = e.target.cellIndex;
+  let currentSquare = units[rowIndex][columnIndex];
+  let canMakeMoves = currentSquare.firstElementChild.className == "blank";
+  let opex =
+    units[(rows + rowIndex) / 2][(columns + columnIndex) / 2].firstElementChild
+      .className != currentChecker.firstElementChild.className &&
+    units[(rows + rowIndex) / 2][(columns + columnIndex) / 2].firstElementChild.className != "blank";
+  if (canMakeMoves && opex) {
+    if (currentChecker.firstElementChild.className == "silver-checker" && !gold) {
+      if (
+        rows == rowIndex - 2 &&
+        (columns == columnIndex - 2 || columns == columnIndex + 2)
+      ) {
+        currentSquare.firstElementChild.className =
+          currentChecker.firstElementChild.className;
+        currentChecker.firstElementChild.className = "blank";
+        //get rid of opponent checker
+        units[(rows + rowIndex) / 2][
+          (columns + columnIndex) / 2
+        ].firstElementChild.className = "blank";
+        turn();
+      }
+    }
+
+    if (
+      currentChecker.firstElementChild.className == "gold-checker" &&
+      gold
+    ) {
+      if (
+        rows == rowIndex + 2 &&
+        (columns == columnIndex - 2 || columns == columnIndex + 2)
+      ) {
+        currentSquare.firstElementChild.className =
+          currentChecker.firstElementChild.className;
+        currentChecker.firstElementChild.className = "blank";
+        //get rid of opponent checker
+        units[(rows + rowIndex) / 2][
+          (columns + columnIndex) / 2
+        ].firstElementChild.className = "blank";
+      }
+      turn();
+    }
+  }
+
+  if (canMakeMoves && opex) {
+    if (currentChecker.firstElementChild.className == "silver-Captain" && !gold) {
+      if (
+        rows == rowIndex - 2 &&
+        (columns == columnIndex - 2 || columns == columnIndex + 2)
+      ) {
+        currentSquare.firstElementChild.className =
+          currentChecker.firstElementChild.className;
+        currentChecker.firstElementChild.className = "blank";
+        //get rid of opponent checker
+        units[(rows + rowIndex) / 2][
+          (columns + columnIndex) / 2
+        ].firstElementChild.className = "blank";
+        turn();
+      }
+      if (
+        rows == rowIndex + 2 &&
+        (columns == columnIndex - 2 || columns == columnIndex + 2)
+      ) {
+        currentSquare.firstElementChild.className =
+          currentChecker.firstElementChild.className;
+        currentChecker.firstElementChild.className = "blank";
+        //get rid of opponent checker
+        units[(rows + rowIndex) / 2][
+          (columns + columnIndex) / 2
+        ].firstElementChild.className = "blank";
+        turn();
+      }
+    }
+  }
+  if (canMakeMoves && opex) {
+    if (currentChecker.firstElementChild.className == "gold-Captain" && gold) {
+      if (
+        rows == rowIndex - 2 &&
+        (columns == columnIndex - 2 || columns == columnIndex + 2)
+      ) {
+        currentSquare.firstElementChild.className =
+          currentChecker.firstElementChild.className;
+        currentChecker.firstElementChild.className = "blank";
+        //get rid of opponent checker
+        units[(rows + rowIndex) / 2][
+          (columns + columnIndex) / 2
+        ].firstElementChild.className = "blank";
+        turn();
+      }
+      if (
+        rows == rowIndex + 2 &&
+        (columns == columnIndex - 2 || columns == columnIndex + 2)
+      ) {
+        currentSquare.firstElementChild.className =
+          currentChecker.firstElementChild.className;
+        currentChecker.firstElementChild.className = "blank";
+        //get rid of opponent checker
+        units[(rows + rowIndex) / 2][
+          (columns + columnIndex) / 2
+        ].firstElementChild.className = "blank";
+        turn();
+      }
+    }
+  }
+  Captain();
+  return canMakeMoves;
+}
+
+function decide() {
+  if (move()) {
+    move();
+  }
+  if (MakeMoves()) {
+    MakeMoves();
+  }
+}
+
+function move(e) {
+  let rowIndex = e.target.parentElement.rowIndex;
+  let columnIndex = e.target.cellIndex;
+  let currentSquare = units[rowIndex][columnIndex];
+  let emptySquare = currentSquare.firstElementChild.className == "blank";
+  let checkerClassName = currentChecker.firstElementChild.className;
+  if (emptySquare) {
+    let canMove = false;
+    if (gold) {
+      if (checkerClassName == "gold-checker") {
+        canMove =
+          rows == rowIndex + 1 &&
+          (columns == columnIndex - 1 || columns == columnIndex + 1);
+      } else if (checkerClassName == "gold-Captain") {
+        canMove =
+          (rows == rowIndex - 1 || rows == rowIndex + 1) &&
+          (columns == columnIndex - 1 || columns == columnIndex + 1);
+      }
+    } else {
+      if (checkerClassName == "silver-checker") {
+        canMove =
+          rows == rowIndex - 1 &&
+          (columns == columnIndex - 1 || columns == columnIndex + 1);
+      } else if (checkerClassName == "silver-Captain") {
+        canMove =
+          (rows == rowIndex - 1 || rows == rowIndex + 1) &&
+          (columns == columnIndex - 1 || columns == columnIndex + 1);
+      }
+    }
     
-    //Add the selected id to the piece
-    $(piece).attr("id", "selected");
-  }else{
-    //Check if the clicked piece is the same as the selected piece
-    if(game.selected.x == $(piece).attr("data-column") && game.selected.y == $(piece).attr("data-row")){
-      game.selected = false;
-      $(piece).attr("id", "");
-      return;
-    }
-    if(game.selected.y == $(piece).attr("data-row")){
-      alert("Not a valid move");
-      return;
-    }
-    if($(piece).hasClass(playerOne) || $(piece).hasClass(playerTwo)){
-      alert("Please select a valid move.");
-      return;
-    }
-    if($(game.piece).hasClass("captain")){
-      handlecaptain(piece);
-      return;
-    }
-    if(game.turn == playerOne){
-      clearPiece(game.selected.x, game.selected.y);
-      placePiece(playerOne, $(piece).attr("data-column"), $(piece).attr("data-row"));
-      game.turn = playerTwo;
-      game.selected = false;
-      return;
-    }
-    if(game.turn == playerTwo){
-      clearPiece(game.selected.x, game.selected.y);
-      if(game.selected.y - $(piece).attr("data-row") != 1)
-        clearPiece(Math.abs(game.selected.x-$(piece).attr("data-column")), game.selected.y-1);
-      placePiece(playerTwo, $(piece).attr("data-column"), $(piece).attr("data-row"));
-      game.turn = playerOne;
-      game.selected = false;
-      return;
-    }
-  }  
+    if (canMove) {
+        currentSquare.firstElementChild.className = checkerClassName;
+        currentChecker.firstElementChild.className = "blank";
+        let squareId = currentChecker.id;
+        let squareRow = parseInt(squareId[1]) - 1;
+        let squareCol = parseInt(squareId[2]) - 1;
+        let checkerColor;
+        if (checkerClassName.includes("silver")) {
+            checkerColor = "silver";
+            }
+        else if (checkerClassName.includes("gold")) {
+           checkerColor = "gold";
+        }
+        let checker = getChecker(squareRow, squareCol, checkerColor);
+        checker.rowIndex = currentSquare.parentElement.rowIndex;
+        checker.colIndex = currentSquare.cellIndex;
+      console.log(checkers);
+        // update related object
+        turn();
+      }
+  }
+  Captain();
+  return canMove;
 }
 
-$(document).ready(function(){ 
-  restart();
-  //Add functionality to all the playable spaces
-  $("#board li").click(function(){
-    input($(this));
-  });
-  
-  //Add functionality to the restart button;
-  $("#restart").click(function(){
-    restart();
-  });
-})
+function getChecker(row, col, color) {
+  if (color == "silver") {
+  return checkers[Math.floor(((8*row) + col)/2)];
+  }
+  else if (color == "gold") {
+  return checkers[Math.floor((((8*row) -16) + col)/2)];
+  }
+}
 
-//******** things to work on later ******
+function turn() {
+  if (gold == true) {
+    gold = false;
+  } else {
+    gold = true;
+  }
+} //keeps track of turns
 
-//making checkerboard
+function highlight(row, col) {
+  units[row][col].style.backgroundColor = "blue";
+}
+function unhighlight(row, col) {
+  units[row][col].style.backgroundColor = "gold";
+}
 
-// let checkerBoard = [];
-// $(function(){
-//   //making 64 squares
-//   for(let i = 0 ; i < 8; i++){
-//     let trOdd = $('<tr>').addClass('odd');
-//     let trEven = $('<tr>').addClass('even');
+function possibilities() {
+  findcolrow();
+  if (!gold) {
+    if (currentChecker.firstElementChild.className == "silver-checker") {
+      if (rows <= 7 && columns <= 7) {
+        if (
+          rows + 1 < 7 &&
+          rows + 1 >= 0 &&
+          columns + 1 <= 7 &&
+          columns + 1 >= 0 &&
+          units[rows + 1][columns + 1].firstElementChild.className == "blank"
+        ) {
+          highlight(rows + 1, columns + 1); //change color of box back to gold
+          //it's possible
+          setTimeout(() => {
+            unhighlight(rows + 1, columns + 1);
+          }, 500);
+        }
+        if (
+          rows + 1 < 7 &&
+          rows + 1 >= 0 &&
+          columns - 1 <= 7 &&
+          columns - 1 >= 0 &&
+          units[rows + 1][columns - 1].firstElementChild.className == "blank"
+        ) {
+          highlight(rows + 1, columns - 1);
+          //it's possible
+          setTimeout(() => {
+            unhighlight(rows + 1, columns - 1);
+          }, 500);
+        }
+      }
+    }
+  }
+  if (gold) {
+    if (currentChecker.firstElementChild.className == "gold-checker") {
+      if (rows <= 7 && columns <= 7) {
 
-//     if(i % 2 !== 0) { 
-//       checkerBoard.push(trEven); 
-//     }
-//     else { 
-//       checkerBoard.push(trOdd); 
-//     }
+        if (
+          rows - 1 < 7 &&
+          rows - 1 >= 0 &&
+          columns + 1 <= 7 &&
+          columns + 1 >= 0 &&
+          units[rows - 1][columns + 1].firstElementChild.className == "blank"
+        ) {
+          console.log("highlight is worCaptain");
+          highlight(rows - 1, columns + 1);
+          //it's possible
+          setTimeout(() => {
+            unhighlight(rows - 1, columns + 1);
+          }, 500);
+        }
+        if (
+          rows - 1 < 7 &&
+          rows - 1 >= 0 &&
+          columns - 1 <= 7 &&
+          columns - 1 >= 0 &&
+          units[rows - 1][columns - 1].firstElementChild.className == "blank"
+        ) {
+          highlight(rows - 1, columns - 1);
+          //it's possible
+          setTimeout(() => {
+            unhighlight(rows - 1, columns - 1);
+          }, 500);
+        }
+      }
+    }
+  }
+  //move or MakeMoves
+}
 
-//     for(let f = 0; f < 8; f++) {
-//       checkerBoard[i].append('<td>');
-//     }
-// }
+function Captain(e) {
+  let rowIndex = e.target.parentElement.rowIndex;
+  let x = currentChecker.parentElement.rowIndex;
 
-//   $('tbody').append(checkerBoard);
-//   $( ".odd td:odd" ).css( "background-color", "transparent" );
-//   $( ".odd td:even" ).css( "background-color", "rgba(128, 128, 128, 0.8)" );
-//   $( ".even td:odd" ).css( "background-color", "rgba(128, 128, 128, 0.8)" );
-//   $( ".even td:even" ).css( "background-color", "transparent" );
-
-
-//   $('#pyrateGame').css({
-//     'border-collapse' : 'collapse'
-//   });
-
-//   $('td').css({
-//     'width'  : '110px',
-//     'height' : '110px'
-//   });
-
-// });
-
-// let reds = document.querySelectorAll("tr:nth-child(-n+3) div");
-// let blacks = document.querySelectorAll("tr:nth-child(n+6) div");
-
-// const clicked = e => {
-//   e.target.classList.toggle("active");
-
-//   let color = e.target.classList.contains("red") ? "red" : "gold";
-//   let crowned = e.target.classList.contains("crowned") ? true : false;
-
-//   //Disable or enable non active pieces
-//   if (color === "red") {
-//     for (red of reds) {
-//       red.classList.toggle("disabled");
-//     }
-//   } else {
-//     for (gold of blacks) {
-//       gold.classList.toggle("disabled");
-//     }
-//   }
-
-//   e.target.classList.remove("disabled");
-
-//   let cell = e.path[1].cellIndex;
-//   let row = e.path[2].rowIndex;
-
-//   let options = findOptions(color, row, cell, crowned);
-
-//   //Loop through all options, checking if each one is already displaying or not.
-//   //If the option is already being displayed remove it, if not then display it and then call the move function inside of the onclick.
-//   options.forEach(function(option) {
-//     if (option.position) {
-//       if (option.position.classList.contains("options")) {
-//         option.position.classList.remove(...option.position.classList);
-//         option.position.classList.remove(color);
-//       } else if (!option.position.classList.contains(color)) {
-//         option.position.classList.add("options");
-//         option.position.classList.add(color);
-//         if (crowned) {
-//           option.position.classList.add("crowned");
-//         }
-//         option.position.onclick = function callHandler(event) {
-//           move(event, e.target, options, color, option.eat);
-//         };
-//       }
-//     }
-//   });
-// };
-
-// const move = (e, prevPos, otherOptions, color, eat) => {
-//   let crowned = e.target.classList.contains("crowned") ? true : false;
-//   //Display the piece in the new position by removing the options class.
-//   e.target.classList.remove("options");
-//   //Remove the previous position
-//   prevPos.classList.remove(...prevPos.classList);
-//   prevPos.removeEventListener("click", clicked);
-//   e.target.onclick = null;
-//   //Remove all other options
-//   otherOptions.forEach(function(otherOption) {
-//     if (otherOption.position) {
-//       if (otherOption.position.classList.contains("options")) {
-//         otherOption.position.classList.remove(
-//           ...otherOption.position.classList
-//         );
-//         otherOption.position.onclick = null;
-//       }
-//     }
-//   });
-
-//   if (eat.state) {
-//     //Remove the piece that was eaten
-//     eat.pos.classList.remove(...eat.pos.classList);
-//     eat.pos.removeEventListener("click", clicked);
-//     let cell = e.path[1].cellIndex;
-//     let row = e.path[2].rowIndex;
-//     //Check if there's a posibility of another jump by calling the findOptions func again
-//     let options = findOptions(color, row, cell, crowned);
-//     options.forEach(function(option) {
-//       if (option.eat.state && !option.position.classList.contains(color)) {
-//         option.position.classList.add("options");
-//         option.position.classList.add(color);
-//         e.target.classList.add("active");
-//         if (crowned) {
-//           option.position.classList.add("crowned");
-//         }
-//         option.position.onclick = function callHandler(event) {
-//           move(event, e.target, options, color, option.eat);
-//         };
-//       } else {
-//         changeTurn(color);
-//       }
-//     });
-//   } else {
-//     changeTurn(color);
-//   }
-
-//   if (e.path[2].rowIndex === 0 || e.path[2].rowIndex === 7) {
-//     crown(e.target);
-//   }
-// };
-
-// const findOptions = (color, row, cell, crowned) => {
-//   let option1 = {
-//       position: null,
-//       eat: { state: false, pos: null }
-//     },
-//     option2 = {
-//       position: null,
-//       eat: { state: false, pos: null }
-//     },
-//     option3 = {
-//       position: null,
-//       eat: { state: false, pos: null }
-//     },
-//     option4 = {
-//       position: null,
-//       eat: { state: false, pos: null }
-//     };
-
-//   if (color === "red") {
-//     //Declare the initial values for the first 2 options
-//     option1.position = document.querySelector(
-//       `tr:nth-of-type(${row + 2}) td:nth-of-type(${cell}) div`
-//     );
-
-//     option2.position = document.querySelector(
-//       `tr:nth-of-type(${row + 2}) td:nth-of-type(${cell + 2}) div`
-//     );
-
-//     if (option1.position) {
-//       if (option1.position.classList.contains("gold")) {
-//         //If the option contains a gold piece check the row and column, relevant for a possible jump.
-//         option1.position = document.querySelector(
-//           `tr:nth-of-type(${row + 3}) td:nth-of-type(${cell - 1}) div`
-//         );
-//         if (option1.position) {
-//           //Check for a possible jump.
-//           if (option1.position.classList.contains("gold")) {
-//             option1.position = null;
-//           } else {
-//             option1.eat.state = true;
-//             option1.eat.pos = document.querySelector(
-//               `tr:nth-of-type(${row + 2}) td:nth-of-type(${cell}) div`
-//             );
-//           }
-//         }
-//       }
-//     }
-
-//     if (option2.position) {
-//       if (option2.position.classList.contains("gold")) {
-//         option2.position = document.querySelector(
-//           `tr:nth-of-type(${row + 3}) td:nth-of-type(${cell + 3}) div`
-//         );
-//         if (option2.position) {
-//           if (option2.position.classList.contains("gold")) {
-//             option2.position = null;
-//           } else {
-//             option2.eat.state = true;
-//             option2.eat.pos = document.querySelector(
-//               `tr:nth-of-type(${row + 2}) td:nth-of-type(${cell + 2}) div`
-//             );
-//           }
-//         }
-//       }
-//     }
-//     //If the piece is crowned find possible options 3 and 4.
-//     if (crowned) {
-//       option3.position = document.querySelector(
-//         `tr:nth-of-type(${row}) td:nth-of-type(${cell}) div`
-//       );
-
-//       option4.position = document.querySelector(
-//         `tr:nth-of-type(${row}) td:nth-of-type(${cell + 2}) div`
-//       );
-
-//       if (option3.position) {
-//         if (option3.position.classList.contains("gold")) {
-//           option3.position = document.querySelector(
-//             `tr:nth-of-type(${row - 1}) td:nth-of-type(${cell - 1}) div`
-//           );
-//           if (option3.position) {
-//             if (option3.position.classList.contains("gold")) {
-//               option3.position = null;
-//             } else {
-//               option3.position = document.querySelector(
-//                 `tr:nth-of-type(${row - 1}) td:nth-of-type(${cell - 1}) div`
-//               );
-//               option3.eat.state = true;
-//               option3.eat.pos = document.querySelector(
-//                 `tr:nth-of-type(${row}) td:nth-of-type(${cell}) div`
-//               );
-//             }
-//           }
-//         }
-//       }
-
-//       if (option4.position) {
-//         if (option4.position.classList.contains("gold")) {
-//           option4.position = document.querySelector(
-//             `tr:nth-of-type(${row - 1}) td:nth-of-type(${cell + 3}) div`
-//           );
-//           if (option4.position) {
-//             if (option4.position.classList.contains("gold")) {
-//               option4.position = null;
-//             } else {
-//               option4.eat.state = true;
-//               option4.eat.pos = document.querySelector(
-//                 `tr:nth-of-type(${row}) td:nth-of-type(${cell + 2}) div`
-//               );
-//             }
-//           }
-//         }
-//       }
-//     }
-//   } else {
-//     option1.position = document.querySelector(
-//       `tr:nth-of-type(${row}) td:nth-of-type(${cell}) div`
-//     );
-
-//     option2.position = document.querySelector(
-//       `tr:nth-of-type(${row}) td:nth-of-type(${cell + 2}) div`
-//     );
-
-//     if (option1.position) {
-//       if (option1.position.classList.contains("red")) {
-//         option1.position = document.querySelector(
-//           `tr:nth-of-type(${row - 1}) td:nth-of-type(${cell - 1}) div`
-//         );
-//         if (option1.position) {
-//           if (option1.position.classList.contains("red")) {
-//             option1.position = null;
-//           } else {
-//             option1.eat.state = true;
-//             option1.eat.pos = document.querySelector(
-//               `tr:nth-of-type(${row}) td:nth-of-type(${cell}) div`
-//             );
-//           }
-//         }
-//       }
-//     }
-
-//     if (option2.position) {
-//       if (option2.position.classList.contains("red")) {
-//         option2.position = document.querySelector(
-//           `tr:nth-of-type(${row - 1}) td:nth-of-type(${cell + 3}) div`
-//         );
-//         if (option2.position) {
-//           if (option2.position.classList.contains("red")) {
-//             option2.position = null;
-//           } else {
-//             option2.eat.state = true;
-//             option2.eat.pos = document.querySelector(
-//               `tr:nth-of-type(${row}) td:nth-of-type(${cell + 2}) div`
-//             );
-//           }
-//         }
-//       }
-//     }
-
-//     if (crowned) {
-//       option3.position = document.querySelector(
-//         `tr:nth-of-type(${row + 2}) td:nth-of-type(${cell}) div`
-//       );
-
-//       option4.position = document.querySelector(
-//         `tr:nth-of-type(${row + 2}) td:nth-of-type(${cell + 2}) div`
-//       );
-
-//       if (option3.position) {
-//         if (option3.position.classList.contains("red")) {
-//           option3.position = document.querySelector(
-//             `tr:nth-of-type(${row + 3}) td:nth-of-type(${cell - 1}) div`
-//           );
-//           if (option3.position) {
-//             if (option3.position.classList.contains("red")) {
-//               option3.position = null;
-//             } else {
-//               option3.eat.state = true;
-//               option3.eat.pos = document.querySelector(
-//                 `tr:nth-of-type(${row + 2}) td:nth-of-type(${cell}) div`
-//               );
-//             }
-//           }
-//         }
-//       }
-
-//       if (option4.position) {
-//         if (option4.position.classList.contains("red")) {
-//           option4.position = document.querySelector(
-//             `tr:nth-of-type(${row + 3}) td:nth-of-type(${cell + 3}) div`
-//           );
-//           if (option4.position) {
-//             if (option4.position.classList.contains("red")) {
-//               option4.position = null;
-//             } else {
-//               option4.eat.state = true;
-//               option4.eat.pos = document.querySelector(
-//                 `tr:nth-of-type(${row + 2}) td:nth-of-type(${cell + 2}) div`
-//               );
-//             }
-//           }
-//         }
-//       }
-//     }
-//   }
-
-//   return [option1, option2, option3, option4];
-// };
-
-// const changeTurn = color => {
-//   reds = document.querySelectorAll(".red:not(.options)");
-
-//   blacks = document.querySelectorAll(".gold:not(.options)");
-
-//   //Remove or add the disabled class, depending on which color just played.
-//   if (color === "red") {
-//     for (red of reds) {
-//       red.classList.add("disabled");
-//       red.addEventListener("click", clicked);
-//     }
-
-//     for (gold of blacks) {
-//       gold.classList.remove("disabled");
-//       gold.addEventListener("click", clicked);
-//     }
-//   } else {
-//     for (red of reds) {
-//       red.classList.remove("disabled");
-//     }
-
-//     for (gold of blacks) {
-//       gold.classList.add("disabled");
-//     }
-//   }
-// };
-
-// const crown = piece => {
-//   piece.classList.add("crowned", "crowning");
-//   document.documentElement.style.setProperty("--shake-anim", "0.2s shake");
-//   setTimeout(() => {
-//     document.documentElement.style.setProperty("--shake-anim", "none");
-//     piece.classList.remove("crowning");
-//   }, 1000);
-// };
-
-// for (red of reds) {
-//   red.classList.add("red");
-//   red.addEventListener("click", clicked);
-// }
-
-// for (gold of blacks) {
-//   gold.classList.add("gold", "disabled");
-//   gold.addEventListener("click", clicked);
-// }
-
-
-
-
-
-
-
-
-
-// for ( let i=0; i<checkerBoard[i].length; i++) {
-//   if (checkerBoard[i] = 0){
-//   for ( let j=0; j < checkerBoard[j].length; j++) {
-//     $(".odd td")
-// .filter(function(i){ return (i % 2 !== 0) })
-// .addClass("gold");
-//     }
-//   }
- 
-// }
-// $(".odd ")
-// .filter(function(i){ return (i % 2 !== 0) })
-// .addClass("gold");
-// $(".odd td")
-// .filter(function(i){ return (i % 2 !== 0) })
-// .addClass("gold");
-// $(".even td:even")
-// .filter(function(i){ return (i % 2 !== 0) })
-// .addClass("gold");
-
-// $(checkerBoard).each( function() {
-//   $(this).find("td").each( function() {
-//     if (
-//     $(this).hasClass("gold")) {
-//      $(this).html("gold")
-//     };
-    
-//   })
-// })
-
-
-// });
-
-
-  
-
-
-
-// // //Sets up the visual board on the button click.
-// // $('#set-board').on('click', function() {
-// //   setBoard();
-// // });
-
-// // //Clear board button clears board array and Virtual Board.
-// // $('#clear-board').on('click', function() {
-// //   clearBoard();
-// // });
-// window.onload = function () {
-// let checkerBoard = [
-//   [0, 1, 0, 1, 0, 1, 0, 1],
-//   [1, 0, 1, 0, 1, 0, 1, 0],
-//   [0, 1, 0, 1, 0, 1, 0, 1],
-//   [0, 0, 0, 0, 0, 0, 0, 0],
-//   [0, 0, 0, 0, 0, 0, 0, 0],
-//   [2, 0, 2, 0, 2, 0, 2, 0],
-//   [0, 2, 0, 2, 0, 2, 0, 2],
-//   [2, 0, 2, 0, 2, 0, 2, 0]
-// ];
+  if (
+    currentChecker.firstElementChild.className == "gold-checker" &&
+    x == 0 //current square's rows, not rows of current checker
+  ) {
+    currentChecker.firstElementChild.className = "gold-Captain";
+  }
+  if (currentChecker.firstElementChild.className == "silver-checker" && x == 7) {
+    currentChecker.firstElementChild.className = "silver-Captain";
+  }
+  // give instructions on how to Captain
+}

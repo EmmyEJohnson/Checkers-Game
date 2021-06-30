@@ -3,38 +3,36 @@
 * {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
   color: white;
   font-family: Copperplate;
   text-align: center;
+
 } 
 
 #wrap {
   position: relative; 
 }
 
-.flag {
-  width: 2800px;
-  height:2000px;
-  position: absolute;
-  top: 0;
-  margin: -20px; 
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  text-align: center;
+body {
+  background: url("https://i.postimg.cc/W3h3mr78/23-E683-C2-A52-E-4337-B0-A4-6-D3-A761-FF55-E.png"), rgb(0, 0, 0);
+  /* background-position: relative; */
+  background-size: 100%;
+  background-repeat: no-repeat;
+  z-index: 0;
 }
 
 /* <div class="email-list"> */
 
 .email-list {
   position: absolute;
-  top:8%;
-  left:6%;
+  margin-top: 0.1%;
+  /* left: 0.1%; */
   width: 30%;
 }
 
 .dropbtn{
-  font-size: 35px;
+  font-size: 20px;
   background: transparent;
   border: transparent;
   text-shadow: 3px 2px 4px rgba(179, 2, 2, 0.8);
@@ -76,12 +74,12 @@ label{
 
 .rules { 
   position: absolute;
-  top:8%;
-  right:5%;
+  margin-top: 0.1%;
+  right: 0.1%;
   width: 30%;  
 }
 .dropRules {
-  font-size: 35px;
+  font-size: 20px;
   background: transparent;
   border: transparent;
   text-shadow: 3px 2px 4px rgba(179, 2, 2, 0.8);
@@ -108,16 +106,16 @@ p {
 
 /* <div class="welcome-page"> section */
 
-.welcome-page {
+/* .welcome-page {
   text-align: center;
   margin-top: 3.5%;
 }
 .welcome-img {
   margin-left: 1.2%;
   width: 70%;
-}
+} */
 /* <div class="playChecks"> section */
-.playChecks {
+/* .playChecks {
   position: relative;
 }
 
@@ -135,7 +133,19 @@ p {
 .player {
   width: 200px;
   font-size: 20px;
+} */
+/*.flag {
+  width: 2800px;
+  height:2000px;
+  position: absolute;
+  top: 0;
+  margin: -20px; 
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  text-align: center;
 }
+
 .flag-element {
   -webkit-animation:oscill 1s ease-in-out infinite alternate; 
   -moz-animation:oscill 1s ease-in-out infinite alternate; 
@@ -150,15 +160,9 @@ p {
   display: inline-block;
   z-index: -3;
 }
-/*forgot what this div is for*/
-#div1 {
-  width: 350px;
-  height: 70px;
-  padding: 10px;
-  border: 1px solid #aaaaaa;
-}
 
-/* @-webkit-keyframes oscill {
+
+ @-webkit-keyframes oscill {
   0% {
       top: 1%;
   }        
@@ -190,13 +194,13 @@ p {
       top: -1%;
   }
 }  */
-
+/* 
  .blackBeard {
-  background: url("https://i.postimg.cc/fLhjfY7f/8-D1-E6986-BB56-4161-872-B-5-E7-D440-B77-F3.jpg"), rgb(0, 0, 0);
+  background: url("https://i.postimg.cc/W3h3mr78/23-E683-C2-A52-E-4337-B0-A4-6-D3-A761-FF55-E.png"), rgb(0, 0, 0);
   background-position: relative;
   background-size: 100%;
   background-repeat: no-repeat;
-}
+} */
 .pyrateTitle {
   color: rgba(255, 255, 255, 0.7);
   text-shadow: 3px 2px 4px rgba(255, 255, 255, 0.7);
@@ -209,90 +213,101 @@ p {
   text-shadow: 3px 2px 4px rgba(2, 2, 2, 0.8);
 }
 
-h4 {
-  font-size: 30px;
-}
 
-#board{
-  width: 360px;
-  height: 360px;
-  background: #000;
-  margin: 0 auto;
-  border: 10px solid #888;
-  overflow: hidden;
-  
-}
-
-#board ul{
-  width: 360px;
-  height: 45px;
-  padding: 0;
-  margin: 0;
+#board {
   position: absolute;
+  margin-top: 5%;
+  margin-left: 10%;
+  z-index: 100;
 }
 
-#board li{
-  width: 45px;
-  height: 45px;
-  background: #fff;
-  margin-right: 45px;
-  float: left;
-  box-sizing: border-box;
-  cursor: pointer;
+.box {
+  width: 100px;
+  height: 100px;
+  /* margin: auto; */
 }
 
-#board ul:nth-of-type(2n){
-  margin-left: 45px;
+
+.box-gray {
+  background-color: rgb(142, 136, 136);
 }
 
-.playerOne::after{
-  content: '';
-  width: 35px;
-  height: 35px;
-  background: silver;
-  display: block;
-  border-radius: 50%;
-  border: solid 2px #000;
-  box-sizing: border-box;
-  margin: 5px;
+.box-black {
+  background-color: transparent;
+ }
+
+.checkers {
+width: 70px;
+height: 70px;
+border-radius: 50%;
+text-align: center;
+margin-left: 5%;
 }
 
-.playerTwo::after{
-  content: '';
-  width: 35px;
-  height: 35px;
+     /* h1{
+        padding-top: 20%; 
+        color: #f9f9f9;
+        text-align: center;
+     }
+     p{
+        color: #000000;
+     } */
+
+
+
+.silver-checker {
+  width: 70px;
+  height: 70px;
+  border-radius: 40px;
+  margin-left: 15px;
+  background-color:silver;
+  text-align: center;
+  border: 1px solid white;
+}
+      
+.gold-checker {
+  width: 70px;
+  height: 70px;
+  border-radius: 40px;
+  margin-left: 15px;
   background: goldenrod;
-  display: block;
-  border-radius: 50%;
-  border: solid 2px #000;
-  box-sizing: border-box;
-  margin: 5px;
+  text-align: center;
+  border: 1px solid white;
 }
 
-.playerOne.captain::before, .playerTwo.captain::before{
-  content: '';
-  width: 10px;
-  height: 10px;
-  position: absolute;
-  top: 17.5px;
-  left: 17.5px;
-  border-radius: 50%;
-  background: yellow;
-  z-index: 10;
+.silver-king {
+  width: 70px;
+  height: 70px;
+  border-radius: 40px;
+  background-color: silver;
+  text-align: center;
+  border:6px solid orange;
+      }
+      
+.gold-king {
+  width: 70px;
+  height: 70px;
+  border-radius: 40px;
+  background-color: goldenrod;
+  text-align: center;
+  border:6px solid orange;
 }
 
-li#selected{
-  background: #f00;
-}
 
-#restart{
-  margin: 40px;
-  width: 120px;
-  height: 50px;
-  font-size: 20px;
-  border-radius: 2em;
-  outline: none;
-}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

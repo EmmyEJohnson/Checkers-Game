@@ -17,10 +17,7 @@
   <body class="landingPage">
     <div id="wrap">
     <div class="flag"> 
-
- 
-    
-
+  
      </div>
     <!--closes .flag -->
 
@@ -101,146 +98,48 @@
       </div><!--closes #myDropRules-->
     </div><br><!-- closes .rules -->
 
-<div class="welcome-page">
-  <div class="welcome-img">
-    <img src="https://i.postimg.cc/13tQMXyc/891-E1-ECD-0987-4-D03-A06-F-05-C267-C37-C85.png" width=137%></div>  
-  
-</div> <!-- closes .welcome-page -->
-  
-</div> <!--closes wrapper-->
+    <h1 class="pyrateTitle">Pyrate Checkers:<span> Play For Booty</span></h1> 
+    <h4 class="startQue">Silver Goes First</h4>
 
-<div class="playChecks">
-  <button class="playBttn" id="playBttn" onclick="openBoard();">Ready to Play?</button>
+    <div id="board"> 
+      <script>{
+      let size = 8;
+      let board = "<table>";
+      let i, j;
+      let classNames;
+          let checker="silver-checker";
+          for (i = 1; i <= size; i++) {
+            board += "<tr>";
+            for (j = 1; j <= size; j++) {
+              classNames = "box ";
+              if ((i + j) % 2 === 0) {
+                  
+                classNames += "box-black";
+               if(i<=3){
+                     checker="silver-checker";
+                  }
+                  if(i>=6){
+                     checker="gold-checker";
+                  }
+                  if(i==4||i==5){
+                      checker="blank";
+                }
+              } else {
+                classNames += "box-gray ";
+                checker=null;
+              }
+              board += '<td id="b'+ i + '' + j +'" onClick="decide();" class="' + classNames + '" >' 
+                    + '<div id="c' + i + '' + j + '" onClick="possibilities();" class="' + checker + '"></div>' + '</td>';
+            }
+            board += "</tr>";
+          }
+          board += "</table>";
+          document.getElementById("board").innerHTML = board;
+  }
+  </script>
+  
+  </div>
 
-  <!-- <tr><td><label>Player 1: <input type=text id=p1name class="player"/></label><br/><br/>
-    <label>Player 2: <input type=text id=p2name class="player"/></label><br/><br/> -->
-  
- <div class="gameboard-container" id="board">
-
-  <!-- <div class="doubloon white-doubloon" style="display:none"> </div>
-<div class="doubloon black-doubloon" style="display:none"> </div>
-
-
-<div class="square" style="display: none" id ="ht"> </div>
-<div class="black-background" id="black-background"> </div>
-
-	<div class="score" id="score">
-		<br>
-	</div>
-<div class="checkerBoard">
-    <div class="doubloon white-doubloon"> </div>
-    <div class="doubloon white-doubloon"> </div>
-    <div class="doubloon white-doubloon"> </div>
-    <div class="doubloon white-doubloon"> </div>
-    <div class="doubloon white-doubloon"> </div>
-    <div class="doubloon white-doubloon"> </div>
-    <div class="doubloon white-doubloon"> </div>
-    <div class="doubloon white-doubloon"> </div>  
-    <div class="doubloon white-doubloon"> </div>
-    <div class="doubloon white-doubloon"> </div>
-    <div class="doubloon white-doubloon"> </div>
-    <div class="doubloon white-doubloon"> </div>  
-  
-    <div class="doubloon black-doubloon"> </div>
-    <div class="doubloon black-doubloon"> </div>
-    <div class="doubloon black-doubloon"> </div>
-    <div class="doubloon black-doubloon"> </div>
-    <div class="doubloon black-doubloon"> </div>
-    <div class="doubloon black-doubloon"> </div>
-    <div class="doubloon black-doubloon"> </div>
-    <div class="doubloon black-doubloon"> </div>
-    <div class="doubloon black-doubloon"> </div>
-    <div class="doubloon black-doubloon"> </div>
-    <div class="doubloon black-doubloon"> </div>
-    <div class="doubloon black-doubloon"> </div>
-  
-  
-    <div class="square black-square"> </div>
-    <div class="square white-square"> </div>
-    <div class="square black-square"> </div>
-    <div class="square white-square"> </div>
-    <div class="square black-square"> </div>
-    <div class="square white-square"> </div>
-    <div class="square black-square"> </div>
-    <div class="square white-square"> </div>
-    <div class="clear-ring"> </div>
-    
-    <div class="square white-square"> </div>
-    <div class="square black-square"> </div>
-    <div class="square white-square"> </div>
-    <div class="square black-square"> </div>
-    <div class="square white-square"> </div>
-    <div class="square black-square"> </div>
-    <div class="square white-square"> </div>
-    <div class="square black-square"> </div>
-    <div class="clear-ring"> </div>
-  
-    <div class="square black-square"> </div>
-    <div class="square white-square"> </div>
-    <div class="square black-square"> </div>
-    <div class="square white-square"> </div>
-    <div class="square black-square"> </div>
-    <div class="square white-square"> </div>
-    <div class="square black-square"> </div>
-    <div class="square white-square"> </div>
-    <div class="clear-ring"> </div>
-  
-    <div class="square white-square"> </div>
-    <div class="square black-square"> </div>
-    <div class="square white-square"> </div>
-    <div class="square black-square"> </div>
-    <div class="square white-square"> </div>
-    <div class="square black-square"> </div>
-    <div class="square white-square"> </div>
-    <div class="square black-square"> </div>
-    <div class="clear-ring"> </div>
-  
-    <div class="square black-square"> </div>
-    <div class="square white-square"> </div>
-    <div class="square black-square"> </div>
-    <div class="square white-square"> </div>
-    <div class="square black-square"> </div>
-    <div class="square white-square"> </div>
-    <div class="square black-square"> </div>
-    <div class="square white-square"> </div>
-    <div class="clear-ring"> </div>
-  
-    <div class="square white-square"> </div>
-    <div class="square black-square"> </div>
-    <div class="square white-square"> </div>
-    <div class="square black-square"> </div>
-    <div class="square white-square"> </div>
-    <div class="square black-square"> </div>
-    <div class="square white-square"> </div>
-    <div class="square black-square"> </div>
-    <div class="clear-ring"> </div>
-  
-    <div class="square black-square"> </div>
-    <div class="square white-square"> </div>
-    <div class="square black-square"> </div>
-    <div class="square white-square"> </div>
-    <div class="square black-square"> </div>
-    <div class="square white-square"> </div>
-    <div class="square black-square"> </div>
-    <div class="square white-square"> </div>
-    <div class="clear-ring"> </div>
-  
-    <div class="square white-square"> </div>
-    <div class="square black-square"> </div>
-    <div class="square white-square"> </div>
-    <div class="square black-square"> </div>
-    <div class="square white-square"> </div>
-    <div class="square black-square"> </div>
-    <div class="square white-square"> </div>
-    <div class="square black-square"> </div>
-    <div class="clear-ring"> </div> -->
-    
-  <!-- </div> closes .checkerBoard -->
-
-  </div> <!-- closes .gameboard-container -->
-
-
-  </div> <!-- closes .playChecks -->
 
   </body> 
 
