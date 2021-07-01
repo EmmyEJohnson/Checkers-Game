@@ -16,7 +16,7 @@
 
 body {
   background: url("https://i.postimg.cc/W3h3mr78/23-E683-C2-A52-E-4337-B0-A4-6-D3-A761-FF55-E.png"), rgb(0, 0, 0);
-  /* background-position: relative; */
+  background-position: relative;
   background-size: 100%;
   background-repeat: no-repeat;
   z-index: 0;
@@ -26,13 +26,13 @@ body {
 
 .email-list {
   position: absolute;
-  margin-top: 0.1%;
-  /* left: 0.1%; */
+  margin-top: 1%;
+  left: 3%;
   width: 30%;
 }
 
 .dropbtn{
-  font-size: 20px;
+  font-size: 30px;
   background: transparent;
   border: transparent;
   text-shadow: 3px 2px 4px rgba(179, 2, 2, 0.8);
@@ -74,12 +74,12 @@ label{
 
 .rules { 
   position: absolute;
-  margin-top: 0.1%;
+  margin-top: 1%;
   right: 0.1%;
   width: 30%;  
 }
 .dropRules {
-  font-size: 20px;
+  font-size: 30px;
   background: transparent;
   border: transparent;
   text-shadow: 3px 2px 4px rgba(179, 2, 2, 0.8);
@@ -106,16 +106,17 @@ p {
 
 /* <div class="welcome-page"> section */
 
-/* .welcome-page {
+.welcome-page {
   text-align: center;
-  margin-top: 3.5%;
+  margin-top: 1%;
 }
 .welcome-img {
   margin-left: 1.2%;
   width: 70%;
-} */
+}
 /* <div class="playChecks"> section */
-/* .playChecks {
+
+.playChecks {
   position: relative;
 }
 
@@ -133,8 +134,8 @@ p {
 .player {
   width: 200px;
   font-size: 20px;
-} */
-/*.flag {
+}
+.flag {
   width: 2800px;
   height:2000px;
   position: absolute;
@@ -193,14 +194,14 @@ p {
   100% {
       top: -1%;
   }
-}  */
-/* 
+} 
+
  .blackBeard {
   background: url("https://i.postimg.cc/W3h3mr78/23-E683-C2-A52-E-4337-B0-A4-6-D3-A761-FF55-E.png"), rgb(0, 0, 0);
   background-position: relative;
   background-size: 100%;
   background-repeat: no-repeat;
-} */
+}
 .pyrateTitle {
   color: rgba(255, 255, 255, 0.7);
   text-shadow: 3px 2px 4px rgba(255, 255, 255, 0.7);

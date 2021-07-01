@@ -6,16 +6,16 @@
 
 //will implement later
 
-// let h = $('.flag').width();
-// for(let i = 0; i < h; i++){
-//     let flagElement = $("<div class='flag-element'>");
-//     flagElement.css('background-position', -i + "px 0");
-//     flagElement.css('-webkit-animation-delay', i * 2 + 'ms');
-//     flagElement.css('-moz-animation-delay', i * 2 + 'ms');
-//     flagElement.css('-ms-animation-delay', i * 2 + 'ms');
-//     flagElement.css('animation-delay', i * 2 + 'ms');
-//     $('.flag').append(flagElement);
-// }
+let h = $('.flag').width();
+for(let i = 0; i < h; i++){
+    let flagElement = $("<div class='flag-element'>");
+    flagElement.css('background-position', -i + "px 0");
+    flagElement.css('-webkit-animation-delay', i * 2 + 'ms');
+    flagElement.css('-moz-animation-delay', i * 2 + 'ms');
+    flagElement.css('-ms-animation-delay', i * 2 + 'ms');
+    flagElement.css('animation-delay', i * 2 + 'ms');
+    $('.flag').append(flagElement);
+}
 
 //dropdown button email form for ioin the republic of pirates
 $("#myDropdown").hide();
@@ -199,6 +199,7 @@ function initCheckers() {
   }
 }
 initCheckers();
+
 
 function findcolrow(e) {
   rows = e.target.parentElement.parentElement.rowIndex;
