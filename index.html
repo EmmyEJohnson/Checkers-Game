@@ -10,149 +10,173 @@
   crossorigin="anonymous"></script>
     <script defer src="./js/script.js"></script>
     <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+
     <title>Checkers</title>
     
-  </head>
-  
-  <body class="landingPage">
-    <div id="wrap">
-    <div class="flag"> 
-  
-     </div>
-    <!--closes .flag -->
-
-        <div class="email-list">
-
-          <button class="dropbtn">Join the Republic of Pirates</button><br>
-
-    <div id="myDropdown" class="dropdown-content">
-
-      <form onsubmit="return false">
-
-        <input class="signup" type="text" placeholder="Last Name" id="lastName"/><br>
-
-        <input class="signup" type="text" placeholder="First Name" id="firstName"/><br>
-
-        <input class="signup" type="email" placeholder="Enter email address" id="email"/><br>
-
-        <input class="signup" type="checkbox" id="newsletter"/>
-        <label for="newsletter">Send Monthly Newsletter</label><br><br>
-
-        <span id="news" class="signup">Questions/ Comments</span><br>
-
-        <textarea class="signup" id="question" rows="4" placeholder="UNDER CONSTRUCTION"></textarea><br>
-
-        <button id="joinBtn" onclick="join();">Join!</button>
-          </form>
-      </div><!--closes #myDropdown .dropdown-content -->
-
-  </div><!-- closes .email-list -->
-
-    <div class="rules">
-      <button class="dropRules">Directions and Rules</button>
-      <div id="myDropRules" class="droprule-content"> 
-          <ol><br>
-            <li>
-              <p>Click on the doubloon piece you would like to move
-            </li><br>
-            <li>
-             <p>Checkers is a two player game. Each player starts with 12 colored discs (of the same color). Typically Checker discs come in sets of black and red.</p>
-            </li><br>
-            <li>
-              <p>A Checker board has 64 squares of alternating colors, 32 light and 32 dark squares.</p>
-            </li><br>
-            <li>
-              <p>Players place their discs (pieces) on the dark squares on their side of the board.</p>
-            </li><br>
-            <li>
-              <p>Black has first play, after turns alternate.</p>
-            </li><br>
-            <li>
-              <p>Moves can only be made on black squares, so the pieces move diagonally. Pieces can only move in a forward direction, toward their opponent.</p>
-            </li><br>
-            <li>
-              <p>If you are moving your disc forward, and not capturing your opponent’s piece in the move, you may only move it forward one square.</p>
-            </li><br>
-            <li>
-              <p>In a capturing move, a piece leaps of the opponents piece in a diagonal line, landing on a dark square on the other side. While you can only capture one piece per jump you can make multiple jumps in a single turn, if the positioning of the pieces allow.</p>
-            </li><br>
-            <li>
-              <p>After a piece is captured, it is removed from the board, and collected by the opponent.</p>
-            </li><br>
-            <li>
-              <p>If you have the ability to jump your opponents pieces, you must. However, in the even there are more than one capture possible from a single square, you may jump whichever piece is preferable.</p>
-            </li><br>
-            <li>
-              <p>Once a piece reaches the first row of their opponents side of the board (conversely, the row farthest from the player who controls the piece), that piece is kinged, or becomes a king, and is crowned with a piece that had been captured by the opponent. King’s stand twice as tall as a single piece.</p>
-            </li><br>
-            <li>
-              <p>Kings can only move diagonally as well, however they can move forward or backward as opposed to single pieces.</p>
-            </li><br>
-            <li>
-              <p>Kings can also jump both forward and backward (diagonally) in the same turn, a multi-direction multi-jump.</p>
-            </li><br>
-            <li>
-              <p>The game is won when the opponent is unable to make a move. This can happen one of two ways: the entirety of a player’s pieces were captured by the opponent, or a player’s pieces are all blocked from moving.</p>
-            </li><br>
-          </ol>
-      </div><!--closes #myDropRules-->
-    </div><br><!-- closes .rules -->
-
-    <div class="welcome-page">
-  <div class="welcome-img">
-    <img src="https://i.postimg.cc/13tQMXyc/891-E1-ECD-0987-4-D03-A06-F-05-C267-C37-C85.png" width=137%></div>  
-  
-</div> <!-- closes .welcome-page -->
-  
-</div> <!--closes wrapper-->
-
-<div class="playChecks">
-  <button class="playBttn" id="playBttn" onclick="openBoard();">Ready to Play?</button>
-</div> <!--closes .playChecks-->
-
-    <!-- <h1 class="pyrateTitle">Pyrate Checkers:<span> Play For Booty</span></h1> 
-    <h4 class="startQue">Silver Goes First</h4> -->
-
-    <div id="board"> 
-      <script>{
-      let size = 8;
-      let board = "<table>";
-      let i, j;
-      let classNames;
-          let checker="silver-checker";
-          for (i = 1; i <= size; i++) {
-            board += "<tr>";
-            for (j = 1; j <= size; j++) {
-              classNames = "box ";
-              if ((i + j) % 2 === 0) {
-                  
-                classNames += "box-black";
-               if(i<=3){
-                     checker="silver-checker";
-                  }
-                  if(i>=6){
-                     checker="gold-checker";
-                  }
-                  if(i==4||i==5){
-                      checker="blank";
-                }
-              } else {
-                classNames += "box-gray ";
-                checker=null;
-              }
-              board += '<td id="b'+ i + '' + j +'" onClick="decide();" class="' + classNames + '" >' 
-                    + '<div id="c' + i + '' + j + '" onClick="possibilities();" class="' + checker + '"></div>' + '</td>';
-            }
-            board += "</tr>";
-          }
-          board += "</table>";
-          document.getElementById("board").innerHTML = board;
-  }
-  </script>
-  
-  </div>
+</head>
 
 
-  </body> 
+<body class="pyrateCheckers">
 
+  <div class="landingPage">
+    <div class="flag"></div>
+
+    <div class="myDropdowns">
+
+      <div class="email-signUp">
+        <button id="newsDropBtn" class="dropBtn">Republic of Pirates Newsletter</button>
+      
+      <div id="signUp-content" class="dropDown-content" style="display: none;">  
+      </div><!--close div id="signUp-content" class="dropDown-content"-->
+      </div><!--close div class="email-signUp"-->
+      
+
+      <div class="rules-directions">
+        <button id="rulesDropBtn" class="dropBtn">Avast Ye! Rules and Directions</button>
+      
+      <div id="rulesDirections-content" class="dropDown-content" style="display: none;">
+      <img src="https://i.postimg.cc/hvNnG4Hb/7-AB7772-F-CC6-A-4146-8-F93-315-DDF6-B48-C0.png" id="rulesImg">
+      </div><!--close id="rulesDirections-content" class="dropDown-content"-->
+      </div><!--closes div class="rules-directions"-->
+      
+    </div><!--closes div class="myDropdowns"-->
+
+  <h2 id="h2" class="pyrateHeader">Ahoy, Me Hearties!</h2>
+<div id="h1" class="pyrateHeader"><img src="https://i.postimg.cc/13tQMXyc/891-E1-ECD-0987-4-D03-A06-F-05-C267-C37-C85.png"></div><br>
+<h3 id="h3" class="pyrateHeader">Bring ye plunder and clap of thunder. We play for booty. Savvy?</h3><br>
+
+<div class="readyToPlay">
+  <button id="revealBoard" class="readyButton">Ready to Play?</button>
+</div><!--close class="readyToPlay"-->
+
+  </div><!--closes div class="landingPage"-->
+
+<div id="gameBoardPage" class="gameBoardPage" style="display:none;">
+
+<div id="gameBoardHeading" class="gameBoardHeading">
+  <h1 id="pirateCheckers" class="pirateCheckers">Pyrate Checkers</h1><br><br>
+  <span id="startQue"> Silver Goes First</span>
+</div><!--close div gameBoardHeading-->
+
+
+  <div id="checkerGameBoard" class="checkerGameBoard">
+
+    <table id="pyrateGame">
+      <tr>
+        <td class="whiteSquare"></td>
+        <td class="blackSquare"><div id="sc-0" class="silverCoin">
+          <img src="https://i.postimg.cc/Jzfnp2dM/silver-coin-sized.png" height="75px" width="75px"></div></td>
+        <td class="whiteSquare"></td>
+        <td class="blackSquare"><div id="sc-1" class="silverCoin">
+          <img src="https://i.postimg.cc/Jzfnp2dM/silver-coin-sized.png" height="75px" width="75px"></div></td>
+        <td class="whiteSquare"></td>
+        <td class="blackSquare"><div id="sc-2" class="silverCoin">
+          <img src="https://i.postimg.cc/Jzfnp2dM/silver-coin-sized.png" height="75px" width="75px"></div></td>
+        <td class="whiteSquare"></td>
+        <td class="blackSquare"><div id="sc-3" class="silverCoin">
+          <img src="https://i.postimg.cc/Jzfnp2dM/silver-coin-sized.png" height="75px" width="75px"></div></td>
+      </tr>
+      <tr>
+        <td class="blackSquare"><div id="sc-4" class="silverCoin">
+          <img src="https://i.postimg.cc/Jzfnp2dM/silver-coin-sized.png" height="75px" width="75px"></div></td>
+        <td class="whiteSquare"></td>
+        <td class="blackSquare"><div id="sc-5" class="silverCoin">
+          <img src="https://i.postimg.cc/Jzfnp2dM/silver-coin-sized.png" height="75px" width="75px"></div></td>
+        <td class="whiteSquare"></td>
+        <td class="blackSquare"><div id="sc-6" class="silverCoin">
+          <img src="https://i.postimg.cc/Jzfnp2dM/silver-coin-sized.png" height="75px" width="75px"></div></td>
+        <td class="whiteSquare"></td>
+        <td class="blackSquare"><div id="sc-7" class="silverCoin">
+          <img src="https://i.postimg.cc/Jzfnp2dM/silver-coin-sized.png" height="75px" width="75px"></div></td>
+        <td class="whiteSquare"></td>
+      </tr>
+      <tr>
+        <td class="whiteSquare"></td>
+        <td class="blackSquare"><div id="sc-8" class="silverCoin">
+          <img src="https://i.postimg.cc/Jzfnp2dM/silver-coin-sized.png" height="75px" width="75px"></div></td>
+        <td class="whiteSquare"></td>
+        <td class="blackSquare"><div id="sc-9" class="silverCoin">
+          <img src="https://i.postimg.cc/Jzfnp2dM/silver-coin-sized.png" height="75px" width="75px"></div></td>
+        <td class="whiteSquare"></td> 
+        <td class="blackSquare"><div id="sc-10" class="silverCoin">
+          <img src="https://i.postimg.cc/Jzfnp2dM/silver-coin-sized.png" height="75px" width="75px"></div></td>
+        <td class="whiteSquare"></td>
+        <td class="blackSquare"><div id="sc-11" class="silverCoin">
+          <img src="https://i.postimg.cc/Jzfnp2dM/silver-coin-sized.png" height="75px" width="75px"></div></td>
+      </tr>
+      <tr>
+        <td class="blackSquare"></td>
+        <td class="whiteSquare"></td>
+        <td class="blackSquare"></td>
+        <td class="whiteSquare"></td>
+        <td class="blackSquare"></td>
+        <td class="whiteSquare"></td>
+        <td class="blackSquare"></td>
+        <td class="whiteSquare"></td>
+      </tr>
+      <tr>
+        <td class="whiteSquare"></td>
+        <td class="blackSquare"></td>
+        <td class="whiteSquare"></td>
+        <td class="blackSquare"></td>
+        <td class="whiteSquare"></td> 
+        <td class="blackSquare"></td>
+        <td class="whiteSquare"></td>
+        <td class="blackSquare"></td>
+      </tr>
+      <tr>
+        <td class="blackSquare"><div id="gc-12" class="goldCoin">
+          <img src="https://i.postimg.cc/Kz8pWxzM/DAC4-EE45-0-D2-C-4247-A3-DD-B481-E8-A99674.png" height="75px" width="75px"></div></td>
+        <td class="whiteSquare"></td>
+        <td class="blackSquare"><div id="gc-13" class="goldCoin">
+          <img src="https://i.postimg.cc/Kz8pWxzM/DAC4-EE45-0-D2-C-4247-A3-DD-B481-E8-A99674.png" height="75px" width="75px"></div></td>
+        <td class="whiteSquare"></td>
+        <td class="blackSquare"><div id="gc-14" class="goldCoin">
+          <img src="https://i.postimg.cc/Kz8pWxzM/DAC4-EE45-0-D2-C-4247-A3-DD-B481-E8-A99674.png" height="75px" width="75px"></div></td>
+        <td class="whiteSquare"></td>
+        <td class="blackSquare"><div id="gc-15" class="goldCoin">
+          <img src="https://i.postimg.cc/Kz8pWxzM/DAC4-EE45-0-D2-C-4247-A3-DD-B481-E8-A99674.png" height="75px" width="75px"></div></td>
+        <td class="whiteSquare"></td>
+      </tr>
+      <tr>
+        <td class="whiteSquare"></td>
+        <td class="blackSquare"><div id="gc-16" class="goldCoin">
+          <img src="https://i.postimg.cc/Kz8pWxzM/DAC4-EE45-0-D2-C-4247-A3-DD-B481-E8-A99674.png" height="75px" width="75px"></div></td>
+        <td class="whiteSquare"></td>
+        <td class="blackSquare"><div id="gc-17" class="goldCoin">
+          <img src="https://i.postimg.cc/Kz8pWxzM/DAC4-EE45-0-D2-C-4247-A3-DD-B481-E8-A99674.png" height="75px" width="75px"></div></td>
+        <td class="whiteSquare"></td> 
+        <td class="blackSquare"><div id="gc-18" class="goldCoin">
+          <img src="https://i.postimg.cc/Kz8pWxzM/DAC4-EE45-0-D2-C-4247-A3-DD-B481-E8-A99674.png" height="75px" width="75px"></div></td>
+        <td class="whiteSquare"></td>
+        <td class="blackSquare"><div id="gc-19" class="goldCoin">
+          <img src="https://i.postimg.cc/Kz8pWxzM/DAC4-EE45-0-D2-C-4247-A3-DD-B481-E8-A99674.png" height="75px" width="75px"></div></td>
+      </tr>
+      <tr>
+        <td class="blackSquare"><div id="gc-20" class="goldCoin">
+          <img src="https://i.postimg.cc/Kz8pWxzM/DAC4-EE45-0-D2-C-4247-A3-DD-B481-E8-A99674.png" height="75px" width="75px"></div></td>
+        <td class="whiteSquare"></td>
+        <td class="blackSquare"><div id="gc-21" class="goldCoin">
+          <img src="https://i.postimg.cc/Kz8pWxzM/DAC4-EE45-0-D2-C-4247-A3-DD-B481-E8-A99674.png" height="75px" width="75px"></div></td>
+        <td class="whiteSquare"></td>
+        <td class="blackSquare"><div id="gc-22" class="goldCoin">
+          <img src="https://i.postimg.cc/Kz8pWxzM/DAC4-EE45-0-D2-C-4247-A3-DD-B481-E8-A99674.png" height="75px" width="75px"></div></td>
+        <td class="whiteSquare"></td>
+        <td class="blackSquare"><div id="gc-23" class="goldCoin">
+          <img src="https://i.postimg.cc/Kz8pWxzM/DAC4-EE45-0-D2-C-4247-A3-DD-B481-E8-A99674.png" height="75px" width="75px"></div></td>
+        <td class="whiteSquare"></td>
+      </tr>
+
+    </table><br>
+
+  <div class="exitGameBoard">
+    <button id="exitGame" class="exitGame">Exit Game</button>
+  </div> 
+
+
+
+</div><!--close checkerGameBoard-->
+
+</div><!--close gameBoardPage-->
+</body>     
 </html>

@@ -1,10 +1,74 @@
-//landing page
+//onclick events
 
-//background
+//rules and directions button
+$("#rulesDropBtn").on('click', function() {
+  $(this).show();
+  $(".dropDown-content").show();
+  $(".pyrateHeader").hide();
+});
+
+$("#rulesImg").on('click', function() {
+  $(this).show();
+  $(".dropDown-content").hide();
+  $(".pyrateHeader").show();
+});
+
+//ready to play button
+$("#revealBoard").on('click', function() {
+  $(this).hide();
+  $(".landingPage").hide();
+  $("#gameBoardPage").show();
+  $(".exitGame").show();
+});
+
+//exit game button
+$("#exitGame").on('click', function() {
+  $(this).hide();
+  $("#gameBoardPage").hide();
+  $(".landingPage").show();
+  $("#revealBoard").show();
+});
 
 
 
-//will implement later
+// let silverCoin = document.createElement("img");
+// silverCoin.setAttribute("src", "https://i.postimg.cc/Bbb4MR3z/A17-F0-D58-1-C69-405-E-99-E3-91-B03-E8-E7957.png");
+// silverCoin.setAttribute("height", "75px");
+// silverCoin.setAttribute("width", "75");
+// silverCoin.setAttribute("alt", "Silver");
+// document.getElementById("silverCoins").appendChild(silverCoin);
+
+
+// let goldCoin = document.createElement("img");
+// goldCoin.setAttribute("src", "https://i.postimg.cc/1zvncv0L/DAC4-EE45-0-D2-C-4247-A3-DD-B481-E8-A99674.png");
+// goldCoin.setAttribute("height", "75px");
+// goldCoin.setAttribute("width", "75");
+// goldCoin.setAttribute("alt", "Gold");
+// document.getElementById("goldCoins").appendChild(goldCoin);
+
+//making the checkerboard
+//td=individual data cell/square  tr=row
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//water movement
 
 let h = $('.flag').width();
 for(let i = 0; i < h; i++){
@@ -17,478 +81,35 @@ for(let i = 0; i < h; i++){
     $('.flag').append(flagElement);
 }
 
-//dropdown button email form for ioin the republic of pirates
-$("#myDropdown").hide();
-$('.dropbtn').click(function(e) {
-  e.stopPropagation();
-  e.preventDefault();
-  let target = $("#myDropdown");
-  if (target.is(':visible')) {
-      $('#myDropdown').css('cssText', 'display: none');
-  } else {
-      $('#myDropdown').css('cssText', 'display: block');
-  }
-});
 
 
-//Group all fields into an obiect
-//Linking all the fields to our fields obiect
+// document.querySelector("#s-Button_2")//join/newsletter button
+//   document.querySelector("#s-Rectangle_1")//whole newsletter drop-in
+//     document.querySelector("#s-Input_1 > div.borderLayer > div > div > div > input[type=text]")//text-email-input for newsletter
+//     document.querySelector("#s-Rectangle_2 > div.borderLayer > div > div")//subscribe button
 
-let fields = {};
-document.addEventListener("DOMContentLoaded", function() {
- fields.firstName = document.getElementById('firstName');
- fields.lastName = document.getElementById('lastName');
- fields.email = document.getElementById('email');
- fields.newsletter = document.getElementById('newsletter');
- fields.question = document.getElementById('question');
-})
+// document.querySelector("#rtr-s-Button_1_0")//rules/directions button
+//   document.querySelector("#s-Paragraph_3")//directions and rules paragraph
 
-//Checking the values entered in the contact form
-//Checking that the field is not empty
-function isNotEmpty(value) {
- if (value == null || 
-     typeof value == 'undefined' ) 
-     return false;
-       return (value.length > 0);
-   }
+// document.querySelector("#s-Rectangle_1")//Ready to play button
 
-//Checking that the field value is a number
- function isNumber(num) {
-   return (num.length > 0) && !isNaN(num);
-   }
+// document.querySelector("#s-Button_4")//reset button
 
-//Check if a string is an email
- function isEmail(email) {
-     let regex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
-     return regex.test(String(email).toLowerCase());
-    }
-
-//Field validation function
-function fieldValidation(field, validationFunction) {
- if (field == null) return false;
-
- let isFieldValid = validationFunction(field.value)
- if (!isFieldValid) {
- field.className = 'placeholderRed';
- } else {
- field.className = '';
- }
-
- return isFieldValid;
-}
-
-//isValid function - combine all the checks
-function isValid() {
- let valid = true;
- 
- valid &= fieldValidation(fields.firstName, isNotEmpty);
- valid &= fieldValidation(fields.lastName, isNotEmpty);
- valid &= fieldValidation(fields.email, isEmail);
- valid &= fieldValidation(fields.question, isNotEmpty);
-
- return valid;
-}
-
-
-//Making User class and sending contact form with constructor
-class User {
- constructor(firstName, lastName, email, newsletter, question) {
- prototype.firstName = firstName;
- prototype.lastName = lastName;
- prototype.email = email;
- prototype.newsletter = newsletter;
- prototype.question = question;
- }
-}
-
-//Sending the form data with iavaScript
-function join() {
- if (isValid()) {
-   let usr = new User (firstName.value, lastName.value, email.value, newsletter.checked);
-
-   alert(`${usr.firstName}You ioined the Republic of Piracy`);
- } else {
-   alert ("Arg! Error!");
- }
-}
-
-//Rules and Directions button
-$("#myDropRules").hide();
-$('.dropRules').click(function(e) {
-  e.stopPropagation();
-  e.preventDefault();
-  let target = $("#myDropRules");
-  if (target.is(':visible')) {
-      $('#myDropRules').css('cssText', 'display: none');
-  } else {
-      $('#myDropRules').css('cssText', 'display: block');
-  }
-});
-
-$("#board").hide();
-$('.playBttn').click(function(e) {
-  e.stopPropagation();
-  e.preventDefault();
-  let target = $("#board");
-  if (target.is(':visible')) {
-      $('#board').css('cssText', 'display: none');
-  } else {
-      $('#board').css('cssText', 'display: block');
-  }
-  console.log("prototype is working");
-});
-
-/****************************************************/
-
-// Click on the doubloon piece you would like to move
-// Checkers is a two player game. Each player starts with 12 colored discs (of the same color). Typically Checker discs come in sets of gold and red.
-// A Checker board has 64 squares of alternating colors, 32 light and 32 dark squares.
-// Players place their discs (pieces) on the dark squares on their side of the board.
-// gold has first play, after turns alternate.
-// Moves can only be made on gold squares, so the pieces move diagonally. Pieces can only move in a forward direction, toward their opponent.
-// If you are moving your disc forward, and not capturing your opponent’s piece in the move, you may only move it forward one square.
-// In a capturing move, a piece leaps of the opponents piece in a diagonal line, landing on a dark square on the other side. While you can only capture one piece per iump you can make multiple iumps in a single turn, if the positioning of the pieces allows.
-// After a piece is captured, it is removed from the board, and collected by the opponent.
-// If you have the ability to iump your opponents pieces, you must. However, in the even there are more than one capture possible from a single square, you may iump whichever piece is preferable.
-// Once a piece reaches the first row of their opponents side of the board (conversely, the row farthest from the player who controls the piece), that piece is kinged, or becomes a king, and is crowned with a piece that had been captured by the opponent. King’s stand twice as tall as a single piece.
-// Kings can only move diagonally as well, however they can move forward or backward as opposed to single pieces.
-// Kings can also iump both forward and backward (diagonally) in the same turn, a multi-direction multi-iump.
-// The game is won when the opponent is unable to make a move. prototype can happen one of two ways: the entirety of a player’s pieces were captured by the opponent, or a player’s pieces are all blocked from moving.
+// document.querySelector("#s-Button_5")//exit game button
 
 
 
+// //hidden elements on page load event
 
-//checkerboard game page
+// document.querySelector("#s-Paragraph_3")//rules and directions hidden on pageload
 
-let units = new Array(8); // for board array
-let gold = true;
-let row = document.querySelectorAll("tr");
-for (let i = 0; i < 8; i++) {
-  let rc = row[i].children;
-  units[i] = rc;
-}
-let rows;
-let columns;
-let currentChecker;
+// document.querySelector("#s-Rectangle_1")//subscribe to newsletter 
 
-function Checker(player, rowIndex, colIndex, isCaptain) {
-  this.player = player;
-  this.rowIndex = rowIndex;
-  this.colIndex = colIndex;
-  this.isCaptain = isCaptain;
-}
+// document.querySelector("#s-Button_4")//reset gameboard button
 
-let checkers = new Array();
+// document.querySelector("#s-Button_5")//exit game button
 
-function initCheckers() {
-  let checker;
+// document.querySelector("#s-Image_1")//gameboard 
 
-  for (let i = 0; i < 8; i++) {
-    for (let j = 0; j < 8; j++) {
-      if ((i + j) % 2 == 0) {
-        if (i < 3) {
-          checker = new Checker("silver", i, j, false);
-          checkers.push(checker);
-        }
-        if (i > 4) {
-          checker = new Checker("gold", i, j, false);
-          checkers.push(checker);
-        }
-      }
-    }
-  }
-}
-initCheckers();
+// document.querySelector("#s-Image_24")
 
-
-function findcolrow(e) {
-  rows = e.target.parentElement.parentElement.rowIndex;
-  columns = e.target.parentElement.cellIndex;
-  currentChecker = units[rows][columns];
-  return rows + "" + columns;
-}
-
-function makeMoves(e) {
-  let rowIndex = e.target.parentElement.rowIndex;
-  let columnIndex = e.target.cellIndex;
-  let currentSquare = units[rowIndex][columnIndex];
-  let canMakeMoves = currentSquare.firstElementChild.className == "blank";
-  let opex =
-    units[(rows + rowIndex) / 2][(columns + columnIndex) / 2].firstElementChild
-      .className != currentChecker.firstElementChild.className &&
-    units[(rows + rowIndex) / 2][(columns + columnIndex) / 2].firstElementChild.className != "blank";
-  if (canMakeMoves && opex) {
-    if (currentChecker.firstElementChild.className == "silver-checker" && !gold) {
-      if (
-        rows == rowIndex - 2 &&
-        (columns == columnIndex - 2 || columns == columnIndex + 2)
-      ) {
-        currentSquare.firstElementChild.className =
-          currentChecker.firstElementChild.className;
-        currentChecker.firstElementChild.className = "blank";
-        //get rid of opponent checker
-        units[(rows + rowIndex) / 2][
-          (columns + columnIndex) / 2
-        ].firstElementChild.className = "blank";
-        turn();
-      }
-    }
-
-    if (
-      currentChecker.firstElementChild.className == "gold-checker" &&
-      gold
-    ) {
-      if (
-        rows == rowIndex + 2 &&
-        (columns == columnIndex - 2 || columns == columnIndex + 2)
-      ) {
-        currentSquare.firstElementChild.className =
-          currentChecker.firstElementChild.className;
-        currentChecker.firstElementChild.className = "blank";
-        //get rid of opponent checker
-        units[(rows + rowIndex) / 2][
-          (columns + columnIndex) / 2
-        ].firstElementChild.className = "blank";
-      }
-      turn();
-    }
-  }
-
-  if (canMakeMoves && opex) {
-    if (currentChecker.firstElementChild.className == "silver-Captain" && !gold) {
-      if (
-        rows == rowIndex - 2 &&
-        (columns == columnIndex - 2 || columns == columnIndex + 2)
-      ) {
-        currentSquare.firstElementChild.className =
-          currentChecker.firstElementChild.className;
-        currentChecker.firstElementChild.className = "blank";
-        //get rid of opponent checker
-        units[(rows + rowIndex) / 2][
-          (columns + columnIndex) / 2
-        ].firstElementChild.className = "blank";
-        turn();
-      }
-      if (
-        rows == rowIndex + 2 &&
-        (columns == columnIndex - 2 || columns == columnIndex + 2)
-      ) {
-        currentSquare.firstElementChild.className =
-          currentChecker.firstElementChild.className;
-        currentChecker.firstElementChild.className = "blank";
-        //get rid of opponent checker
-        units[(rows + rowIndex) / 2][
-          (columns + columnIndex) / 2
-        ].firstElementChild.className = "blank";
-        turn();
-      }
-    }
-  }
-  if (canMakeMoves && opex) {
-    if (currentChecker.firstElementChild.className == "gold-Captain" && gold) {
-      if (
-        rows == rowIndex - 2 &&
-        (columns == columnIndex - 2 || columns == columnIndex + 2)
-      ) {
-        currentSquare.firstElementChild.className =
-          currentChecker.firstElementChild.className;
-        currentChecker.firstElementChild.className = "blank";
-        //get rid of opponent checker
-        units[(rows + rowIndex) / 2][
-          (columns + columnIndex) / 2
-        ].firstElementChild.className = "blank";
-        turn();
-      }
-      if (
-        rows == rowIndex + 2 &&
-        (columns == columnIndex - 2 || columns == columnIndex + 2)
-      ) {
-        currentSquare.firstElementChild.className =
-          currentChecker.firstElementChild.className;
-        currentChecker.firstElementChild.className = "blank";
-        //get rid of opponent checker
-        units[(rows + rowIndex) / 2][
-          (columns + columnIndex) / 2
-        ].firstElementChild.className = "blank";
-        turn();
-      }
-    }
-  }
-  Captain();
-  return canMakeMoves;
-}
-
-function decide() {
-  if (move()) {
-    move();
-  }
-  if (MakeMoves()) {
-    MakeMoves();
-  }
-}
-
-function move(e) {
-  let rowIndex = e.target.parentElement.rowIndex;
-  let columnIndex = e.target.cellIndex;
-  let currentSquare = units[rowIndex][columnIndex];
-  let emptySquare = currentSquare.firstElementChild.className == "blank";
-  let checkerClassName = currentChecker.firstElementChild.className;
-  if (emptySquare) {
-    let canMove = false;
-    if (gold) {
-      if (checkerClassName == "gold-checker") {
-        canMove =
-          rows == rowIndex + 1 &&
-          (columns == columnIndex - 1 || columns == columnIndex + 1);
-      } else if (checkerClassName == "gold-Captain") {
-        canMove =
-          (rows == rowIndex - 1 || rows == rowIndex + 1) &&
-          (columns == columnIndex - 1 || columns == columnIndex + 1);
-      }
-    } else {
-      if (checkerClassName == "silver-checker") {
-        canMove =
-          rows == rowIndex - 1 &&
-          (columns == columnIndex - 1 || columns == columnIndex + 1);
-      } else if (checkerClassName == "silver-Captain") {
-        canMove =
-          (rows == rowIndex - 1 || rows == rowIndex + 1) &&
-          (columns == columnIndex - 1 || columns == columnIndex + 1);
-      }
-    }
-    
-    if (canMove) {
-        currentSquare.firstElementChild.className = checkerClassName;
-        currentChecker.firstElementChild.className = "blank";
-        let squareId = currentChecker.id;
-        let squareRow = parseInt(squareId[1]) - 1;
-        let squareCol = parseInt(squareId[2]) - 1;
-        let checkerColor;
-        if (checkerClassName.includes("silver")) {
-            checkerColor = "silver";
-            }
-        else if (checkerClassName.includes("gold")) {
-           checkerColor = "gold";
-        }
-        let checker = getChecker(squareRow, squareCol, checkerColor);
-        checker.rowIndex = currentSquare.parentElement.rowIndex;
-        checker.colIndex = currentSquare.cellIndex;
-      console.log(checkers);
-        // update related object
-        turn();
-      }
-  }
-  Captain();
-  return canMove;
-}
-
-function getChecker(row, col, color) {
-  if (color == "silver") {
-  return checkers[Math.floor(((8*row) + col)/2)];
-  }
-  else if (color == "gold") {
-  return checkers[Math.floor((((8*row) -16) + col)/2)];
-  }
-}
-
-function turn() {
-  if (gold == true) {
-    gold = false;
-  } else {
-    gold = true;
-  }
-} //keeps track of turns
-
-function highlight(row, col) {
-  units[row][col].style.backgroundColor = "blue";
-}
-function unhighlight(row, col) {
-  units[row][col].style.backgroundColor = "gold";
-}
-
-function possibilities() {
-  findcolrow();
-  if (!gold) {
-    if (currentChecker.firstElementChild.className == "silver-checker") {
-      if (rows <= 7 && columns <= 7) {
-        if (
-          rows + 1 < 7 &&
-          rows + 1 >= 0 &&
-          columns + 1 <= 7 &&
-          columns + 1 >= 0 &&
-          units[rows + 1][columns + 1].firstElementChild.className == "blank"
-        ) {
-          highlight(rows + 1, columns + 1); //change color of box back to gold
-          //it's possible
-          setTimeout(() => {
-            unhighlight(rows + 1, columns + 1);
-          }, 500);
-        }
-        if (
-          rows + 1 < 7 &&
-          rows + 1 >= 0 &&
-          columns - 1 <= 7 &&
-          columns - 1 >= 0 &&
-          units[rows + 1][columns - 1].firstElementChild.className == "blank"
-        ) {
-          highlight(rows + 1, columns - 1);
-          //it's possible
-          setTimeout(() => {
-            unhighlight(rows + 1, columns - 1);
-          }, 500);
-        }
-      }
-    }
-  }
-  if (gold) {
-    if (currentChecker.firstElementChild.className == "gold-checker") {
-      if (rows <= 7 && columns <= 7) {
-
-        if (
-          rows - 1 < 7 &&
-          rows - 1 >= 0 &&
-          columns + 1 <= 7 &&
-          columns + 1 >= 0 &&
-          units[rows - 1][columns + 1].firstElementChild.className == "blank"
-        ) {
-          console.log("highlight is worCaptain");
-          highlight(rows - 1, columns + 1);
-          //it's possible
-          setTimeout(() => {
-            unhighlight(rows - 1, columns + 1);
-          }, 500);
-        }
-        if (
-          rows - 1 < 7 &&
-          rows - 1 >= 0 &&
-          columns - 1 <= 7 &&
-          columns - 1 >= 0 &&
-          units[rows - 1][columns - 1].firstElementChild.className == "blank"
-        ) {
-          highlight(rows - 1, columns - 1);
-          //it's possible
-          setTimeout(() => {
-            unhighlight(rows - 1, columns - 1);
-          }, 500);
-        }
-      }
-    }
-  }
-  //move or MakeMoves
-}
-
-function Captain(e) {
-  let rowIndex = e.target.parentElement.rowIndex;
-  let x = currentChecker.parentElement.rowIndex;
-
-  if (
-    currentChecker.firstElementChild.className == "gold-checker" &&
-    x == 0 //current square's rows, not rows of current checker
-  ) {
-    currentChecker.firstElementChild.className = "gold-Captain";
-  }
-  if (currentChecker.firstElementChild.className == "silver-checker" && x == 7) {
-    currentChecker.firstElementChild.className = "silver-Captain";
-  }
-  // give instructions on how to Captain
-}

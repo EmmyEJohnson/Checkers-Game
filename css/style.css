@@ -1,5 +1,3 @@
-/* CSS Flexbox */
-
 * {
   margin: 0;
   padding: 0;
@@ -7,137 +5,48 @@
   color: white;
   font-family: Copperplate;
   text-align: center;
-
 } 
 
-#wrap {
-  position: relative; 
-}
-
 body {
-  background: url("https://i.postimg.cc/W3h3mr78/23-E683-C2-A52-E-4337-B0-A4-6-D3-A761-FF55-E.png"), rgb(0, 0, 0);
-  background-position: relative;
-  background-size: 100%;
-  background-repeat: no-repeat;
-  z-index: 0;
+  background: black;
+  z-index: -3;
 }
 
-/* <div class="email-list"> */
-
-.email-list {
-  position: absolute;
+.myDropdowns {
+  display: flex;
+  justify-content: space-around;
   margin-top: 1%;
-  left: 3%;
-  width: 30%;
 }
 
-.dropbtn{
-  font-size: 30px;
+.dropBtn {
+  flex-direction: row;
   background: transparent;
   border: transparent;
   text-shadow: 3px 2px 4px rgba(179, 2, 2, 0.8);
+  cursor: pointer;
 }
 
-.dropbtn:hover {
-  color: rgb(162, 6, 6);
-}
-
-#myDropdown {
-  margin-top: 10px; 
-  background: rgb(128, 128, 128, 0.8);
-  background-size: 100%;
-  
-}
-#joinBtn {
-  justify-items: center;
+.readyButton {
   background: transparent;
   border: transparent;
+  text-shadow: 3px 2px 4px rgba(179, 2, 2, 0.8);
+  font-size: 40px;
+  cursor: pointer;
+}
+
+#h2 {
+  /* margin-top: 1%; */
+  margin-bottom: 1%;
   font-size: 35px;
-  margin-bottom: 10px;
 }
-#joinBtn:hover {
-  color: rgb(162, 6, 6);
-}
-.signup {
-  width: 98%;
-  margin-bottom: 5px;
-  margin-top: 10px;
-  font-size: 25px;
- 
-}
-label{
+
+#h3 {
   font-size: 20px;
 }
-#question {
-  height: 200px;
-}
 
-.rules { 
-  position: absolute;
-  margin-top: 1%;
-  right: 0.1%;
-  width: 30%;  
-}
-.dropRules {
-  font-size: 30px;
-  background: transparent;
-  border: transparent;
-  text-shadow: 3px 2px 4px rgba(179, 2, 2, 0.8);
-}
-
-.dropRules:hover {
-  color: rgb(162, 6, 6);
-}
-
-/* <div class="rules"> section */
-
-#myDropRules {
-  margin-top: 10px; 
-  font-size: 20px;
-  background: rgb(128, 128, 128, 0.8);
-  background-size: 100%;
-}
-li {
-  color: red;
-}
-p {
- color: white;
-}
-
-/* <div class="welcome-page"> section */
-
-.welcome-page {
-  text-align: center;
-  margin-top: 1%;
-}
-.welcome-img {
-  margin-left: 1.2%;
-  width: 70%;
-}
-/* <div class="playChecks"> section */
-
-.playChecks {
-  position: relative;
-}
-
-.playBttn{
-  font-size: 55px;
-  background: transparent;
-  border: transparent;
-  text-shadow: 3px 2px 4px rgba(179, 2, 2, 0.8);
-  margin-bottom: 20px;
-}
-
-.playBttn:hover {
-  color: rgb(162, 6, 6);
-}
-.player {
-  width: 200px;
-  font-size: 20px;
-}
 .flag {
-  width: 2800px;
-  height:2000px;
+  width: 1800px;
+  height: 1000px;
   position: absolute;
   top: 0;
   margin: -20px; 
@@ -145,199 +54,103 @@ p {
   flex-direction: row;
   justify-content: center;
   text-align: center;
+  z-index: -3;
 }
-
 .flag-element {
   -webkit-animation:oscill 1s ease-in-out infinite alternate; 
   -moz-animation:oscill 1s ease-in-out infinite alternate; 
   -ms-animation:oscill 1s ease-in-out infinite alternate; 
   animation:oscill 1s ease-in-out infinite alternate; 
   background: url('https://i.postimg.cc/5y0yzZw9/CA7-C5-ED5-01-BB-4-BFF-85-CF-4-BDE673-DB9-AD-1-105-c.jpg');
-  background-size: 4000px 100%;
+  background-size: 2000px 100%;
   background-repeat: no-repeat no-repeat;
   position:relative;
-  height: 120%;
+  height: 100%;
   width:1px;
   display: inline-block;
   z-index: -3;
 }
 
-
- @-webkit-keyframes oscill {
+ /* @-webkit-keyframes oscill {
   0% {
-      top: 1%;
+      top: 2%;
   }        
   100% {
-      top: -1%;
+      top: -2%;
   }
 }
 @-moz-keyframes oscill {
   0% {
-      top: 1%;
+      top: 2%;
   }        
   100% {
-      top: -1%;
+      top: -2%;
   }
 }
 @-ms-keyframes oscill {
   0% {
-      top: 1%;
+      top: 2%;
   }        
   100% {
-      top: -1%;
+      top: -2%;
   }
 }
 @keyframes oscill {
   0% {
-      top: 1%;
+      top: 2%;
   }        
   100% {
-      top: -1%;
+      top: -2%;
   }
-} 
+}  */
 
- .blackBeard {
-  background: url("https://i.postimg.cc/W3h3mr78/23-E683-C2-A52-E-4337-B0-A4-6-D3-A761-FF55-E.png"), rgb(0, 0, 0);
+#gameBoardPage {
+  background: url("https://i.postimg.cc/W3h3mr78/23-E683-C2-A52-E-4337-B0-A4-6-D3-A761-FF55-E.png");
   background-position: relative;
-  background-size: 100%;
+  background-size: cover;
   background-repeat: no-repeat;
 }
-.pyrateTitle {
-  color: rgba(255, 255, 255, 0.7);
-  text-shadow: 3px 2px 4px rgba(255, 255, 255, 0.7);
-  margin-top: 20px;
-  font-size: 70px;
-}
-.pyrateTitle span {
-  font-size: 40px;
-  color: rgba(248, 208, 122, 0.568);
-  text-shadow: 3px 2px 4px rgba(2, 2, 2, 0.8);
-}
 
-
-#board {
-  position: absolute;
-  margin-top: 5%;
+.gameBoardHeading {
+  display: flex;
+  margin-top: 1%;
   margin-left: 10%;
-  z-index: 100;
+  margin-bottom: 0.5%;
 }
 
-.box {
-  width: 100px;
-  height: 100px;
-  /* margin: auto; */
-}
+.pirateCheckers {
+  font-size: 45px;
+} 
 
-
-.box-gray {
-  background-color: rgb(142, 136, 136);
-}
-
-.box-black {
-  background-color: transparent;
- }
-
-.checkers {
-width: 70px;
-height: 70px;
-border-radius: 50%;
-text-align: center;
-margin-left: 5%;
-}
-
-     /* h1{
-        padding-top: 20%; 
-        color: #f9f9f9;
-        text-align: center;
-     }
-     p{
-        color: #000000;
-     } */
-
-
-
-.silver-checker {
-  width: 70px;
-  height: 70px;
-  border-radius: 40px;
-  margin-left: 15px;
-  background-color:silver;
-  text-align: center;
-  border: 1px solid white;
-}
-      
-.gold-checker {
-  width: 70px;
-  height: 70px;
-  border-radius: 40px;
-  margin-left: 15px;
-  background: goldenrod;
-  text-align: center;
-  border: 1px solid white;
-}
-
-.silver-king {
-  width: 70px;
-  height: 70px;
-  border-radius: 40px;
-  background-color: silver;
-  text-align: center;
-  border:6px solid orange;
-      }
-      
-.gold-king {
-  width: 70px;
-  height: 70px;
-  border-radius: 40px;
-  background-color: goldenrod;
-  text-align: center;
-  border:6px solid orange;
+#startQue {
+  padding: 2px;
+  margin-top: 2%;
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*future features to work on*/
-
-/* .silverDoubloon {
-  content: url("https://i.postimg.cc/jj90QpTP/2255-A307-528-F-4-E9-D-92-CC-589-C381-C057-C.png");
-  width: 15%;
-  position: absolute;
-  z-index: 10;
+.exitGame {
+  color: red;
+  font-size: 18px;
+  background: transparent;
+  border: transparent;
+  margin: 2%;
+  display: flex;
+  float: right;
+}
+#pyrateGame {
+  background: transparent;
+  margin-top: 2%;
+  margin-left: 10%;
 }
 
-.goldDoubloon {
-  content: url("https://i.postimg.cc/6TxsZndZ/D9-B92-EB7-015-E-4-D30-91-AC-083428-DB6-F6-D.png");
-  width: 15%;
-  position: absolute;
-  z-index: 10;
-} */
+.blackSquare {
+  width: 90px;
+  height: 90px;
+  background: transparent;
+}
 
-
-/* #pyrateGame {
-  position: relative;
-  top: 40px;
-  left: 10%;
-}*/
-
-  
-
+.whiteSquare {
+  width: 90px;
+  height: 90px;
+  background: rgba(128, 128, 128, 0.75);
+}
