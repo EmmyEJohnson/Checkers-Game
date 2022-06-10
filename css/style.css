@@ -71,38 +71,38 @@ body {
   z-index: -3;
 }
 
- /* @-webkit-keyframes oscill {
+ @-webkit-keyframes oscill {
   0% {
-      top: 2%;
+      top: 1%;
   }        
   100% {
-      top: -2%;
+      top: -1%;
   }
 }
 @-moz-keyframes oscill {
   0% {
-      top: 2%;
+      top: 1%;
   }        
   100% {
-      top: -2%;
+      top: -1%;
   }
 }
 @-ms-keyframes oscill {
   0% {
-      top: 2%;
+      top: 1%;
   }        
   100% {
-      top: -2%;
+      top: -1%;
   }
 }
 @keyframes oscill {
   0% {
-      top: 2%;
+      top: 1%;
   }        
   100% {
-      top: -2%;
+      top: -1%;
   }
-}  */
+} 
 
 #gameBoardPage {
   background: url("https://i.postimg.cc/W3h3mr78/23-E683-C2-A52-E-4337-B0-A4-6-D3-A761-FF55-E.png");
@@ -120,23 +120,17 @@ body {
 
 .pirateCheckers {
   font-size: 45px;
+  color: rgba(218, 165, 32, .75);
+  text-shadow: 3px 2px 4px rgba(218, 165, 32, .5);
 } 
 
 #startQue {
   padding: 2px;
   margin-top: 2%;
+  color: rgba(218, 165, 32, .65);
+  text-shadow: 2px 2px 2px rgba(255, 255, 255, .5);
 }
 
-
-.exitGame {
-  color: red;
-  font-size: 18px;
-  background: transparent;
-  border: transparent;
-  margin: 2%;
-  display: flex;
-  float: right;
-}
 #pyrateGame {
   background: transparent;
   margin-top: 2%;
@@ -153,4 +147,38 @@ body {
   width: 90px;
   height: 90px;
   background: rgba(128, 128, 128, 0.75);
+}
+
+.turnKeeper {
+  display: flex;
+  justify-content: center;
+}
+
+.silverTurnText {
+  margin-right: 1%;
+}
+
+.goldTurnText {
+  margin-left: 1%;
+}
+.exitGame {
+  color: red;
+  font-size: 18px;
+  background: transparent;
+  border: transparent;
+  margin: 2%;
+  display: flex;
+  float: right;
+  cursor: pointer;
+}
+
+.resetGame {
+  color: red;
+  font-size: 18px;
+  background: transparent;
+  border: transparent;
+  margin: 2%;
+  display: flex;
+  float: left;
+  cursor: pointer;
 }
